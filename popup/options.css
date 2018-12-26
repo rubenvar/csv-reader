@@ -1,0 +1,22 @@
+body {
+  background: linear-gradient(155deg, #fff 50%, #ffcf00);
+}
+
+p,
+input,
+label,
+button {
+  font-family: 'Arial', sans-serif;
+  font-size: 20px;
+}
+
+form {
+  border: 1px solid;
+}
+
+input {
+}
+
+.hidden {
+  display: none !important;
+}
