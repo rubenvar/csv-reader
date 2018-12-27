@@ -1,6 +1,3 @@
-// CSS to hide anything on the page
-// const hidePage = ``;
-
 const popup = document.querySelector('#csv-reader-popup');
 const buttons = popup.querySelectorAll('.button');
 
