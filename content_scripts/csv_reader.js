@@ -18,9 +18,6 @@ function mainWork() {
 
     const lineArray = htmlNoTags.split('\n');
 
-    // TODO: if there is a title line, have option to transform data into array of objects, JSON style
-
-    // TODO: detect separator, not hard coded or required from form!
     const arrayOfLineArrays = lineArray.map(line => {
       return line.split(separator === '' ? ',' : separator);
     });
@@ -34,8 +31,8 @@ function mainWork() {
     }
 
     // build the output table HTML chain manually here:
-    // TODO: improve this to be more resilient
-    result += '<table style="border: 5px solid #00f">';
+    // TODO: improve this to be more resilient (and follow 🤣 best-practices)
+    result += '<table style="border: 5px solid #00f; font-family: Arial;">';
 
     // TODO: find a better way without mutating the array
     if (titleLine) {
@@ -46,7 +43,6 @@ function mainWork() {
       result += row;
     }
 
-    // TODO: if item looks like link, add <a> tag
     arrayOfLineArrays.forEach(array => {
       let row = '<tr>';
       array.forEach(item => (row += '<td>' + item + '</td>'));

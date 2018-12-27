@@ -1,6 +1,3 @@
-// TODO: Popup/button should only show if it's a csv or xls page
-// TODO: Instead of download .csv, open them in the browser window
-
 // CSS to hide anything on the page
 const hidePage = `body > :not(.csv-table) {display: none;} tr:nth-child(odd) {background: #eee;}`;
 
@@ -63,7 +60,26 @@ function reportExecuteScriptError(error) {
   console.error(`Failed to execute script: ${error.message}`);
 }
 
-// Start script on popup load
+function checkExtension(tabs) {
+  // get current tab and extension
+  let url = tabs[0].url;
+  let ext = (url = url.substr(1 + url.lastIndexOf('/')).split('?')[0])
+    .split('#')[0]
+    .substr(url.lastIndexOf('.'));
+  // if not csv, error and out
+  if (ext !== '.csv') {
+    reportExecuteScriptError({ message: 'Not a .csv page' });
+    return;
+  }
+}
+
+// start checking for the filetype
+browser.tabs
+  .query({ active: true, currentWindow: true })
+  .then(checkExtension)
+  .catch(reportExecuteScriptError);
+
+// start main script
 browser.tabs
   .executeScript({ file: '/content_scripts/csv_reader.js' })
   .then(listenForClicks)

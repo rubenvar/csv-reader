@@ -6,8 +6,9 @@
   "icons": {
     "48": "icons/border-48.png"
   },
-  "permissions": ["<all_urls>"],
+  "permissions": ["tabs", "<all_urls>"],
   "browser_action": {
+    "browser_style": true,
     "default_icon": "icons/border-48.png",
     "default_title": "CSV Reader",
     "default_popup": "popup/options.html"

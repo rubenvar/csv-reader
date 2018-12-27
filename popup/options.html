@@ -1,29 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>The result is here</title>
   <link rel="stylesheet" href="options.css">
+  <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
 </head>
+
 <body>
+
   <div id="csv-reader-popup">
-    <p>🤖 Do you want to convert the .csv raw data in this page to something readable?</p>
-    <p>🖊️ Just need a couple of details:</p>
-    <form action="">
-      <input type="text" name="separator" id="separator" placeholder="🚧 What is the separator?" required autofocus>
-      <br /><br />
-      <input type="checkbox" name="title-line" id="title-line" value="1line"> 
-      <label for="title-line">👒 Check the box if there is a 1st title line</label>
-      <br /><br />
-      <input type="number" name="skip-lines" id="skip-lines" placeholder="✂️ Number of lines to skip in the beginning">
-      <br /><br />
-      <button class="button convert" id="options-submit">🌟 Convert!</button>
-    </form>
-    <button class="button reset" value="reset">Reset</button>
+
+    <p class="intro">🤖 Do you want to convert the .csv raw data in this page to something readable?</p>
+
+    <div class="actions">
+
+      <form class="options" action="">
+        <h2>🖊️ Just need a couple of details</h2>
+        <div class="form-item">
+          <label for="separator">🚧 What is the separator?</label>
+          <input type="text" name="separator" id="separator" placeholder=";" required autofocus>
+        </div>
+        <div class="form-item">
+          <label for="title-line">🎩 Check if there is a first title line</label>
+          <input type="checkbox" name="title-line" id="title-line" value="1line"> 
+        </div>
+        <div class="form-item">
+          <label for="skip-lines">✂️ Number of lines to skip at the top</label>
+          <input type="number" name="skip-lines" id="skip-lines" placeholder="3">
+        </div>
+        <button class="button convert" id="options-submit">🌟 Convert!</button>
+      </form>
+
+      <div class="reset-container">
+        <h2>👋 Or get everything back to normal</h2>
+        <p>Get your csv back and remove the table:</p>
+        <button class="button reset" value="reset">💣 Reset</button>
+      </div>
+
+    </div>
+
   </div>
+
   <div id="error-content" class="hidden">
     <p>This doesn't seem to work here...</p><p>Try a different page.</p>
   </div>
+
   <script src="options.js"></script>
+
 </body>
 </html>
