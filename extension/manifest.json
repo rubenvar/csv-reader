@@ -4,12 +4,12 @@
   "version": "0.1.0",
   "description": "Transforms raw csv data into a simple html table, easily readable on the browser",
   "icons": {
-    "48": "icons/border-48.png"
+    "48": "icons/csv-48.png"
   },
   "permissions": ["tabs", "<all_urls>"],
   "browser_action": {
     "browser_style": true,
-    "default_icon": "icons/border-48.png",
+    "default_icon": "icons/csv-48.png",
     "default_title": "CSV Reader",
     "default_popup": "popup/options.html"
   },

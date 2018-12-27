@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Search for '<pre>' tags and only process the content inside.
 
 ### Added
+- Chrome polyfill
 - If there is a title line, option to transform data into JSON and export.
 - If an item looks like link, add '<a>' tags.
 - If page tries to download .csv, open them in the browser window anyway.

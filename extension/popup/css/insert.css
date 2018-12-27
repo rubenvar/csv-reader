@@ -1,0 +1,19 @@
+body > :not(.csv-table) {
+  display: none;
+}
+
+table {
+  border: 5px solid #ffb829;
+  font-family: 'Arial', sans-serif;
+}
+
+tr:nth-child(odd) {
+  background: #eee;
+}
+
+td,
+th {
+  padding: 2px;
+  border: none;
+  margin: 0;
+}

@@ -32,7 +32,7 @@ function mainWork() {
 
     // build the output table HTML chain manually here:
     // TODO: improve this to be more resilient (and follow 🤣 best-practices)
-    result += '<table style="border: 5px solid #ffb829; font-family: Arial;">';
+    result += '<table>';
 
     // TODO: find a better way without mutating the array
     if (titleLine) {

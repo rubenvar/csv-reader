@@ -1,5 +1,5 @@
 // CSS to hide anything on the page
-const hidePage = `body > :not(.csv-table) {display: none;} tr:nth-child(odd) {background: #eee;}`;
+// const hidePage = ``;
 
 const popup = document.querySelector('#csv-reader-popup');
 const buttons = popup.querySelectorAll('.button');
@@ -11,7 +11,7 @@ function listenForClicks() {
       e.preventDefault();
 
       function processCSV(tabs) {
-        browser.tabs.insertCSS({ code: hidePage });
+        browser.tabs.insertCSS({ file: 'css/insert.css' });
 
         const separator = document.querySelector('#separator').value;
         const titleLine = document.querySelector('#title-line').checked;
@@ -28,7 +28,7 @@ function listenForClicks() {
       }
 
       function reset(tabs) {
-        browser.tabs.removeCSS({ code: hidePage });
+        browser.tabs.removeCSS({ file: 'css/insert.css' });
         browser.tabs.sendMessage(tabs[0].id, { command: 'reset' });
 
         window.close();
