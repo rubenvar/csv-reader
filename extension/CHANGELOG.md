@@ -8,10 +8,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Search for '<pre>' tags and only process the content inside.
 
 ### Added
-- Chrome polyfill
+- Icons for the browser button in dark and light colors.
+- Chrome polyfill.
 - If there is a title line, option to transform data into JSON and export.
 - If an item looks like link, add '<a>' tags.
 - If page tries to download .csv, open them in the browser window anyway.
+
+## [0.1.1] - 2018-12-28
+### Fixed
+- Fix page extension check: allow extension in caps too.
 
 ## [0.1.0] - 2018-12-27
 - Initial release, with basic features.
