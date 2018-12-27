@@ -14,7 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - If an item looks like link, add '<a>' tags.
 - If page tries to download .csv, open them in the browser window anyway.
 
-## [0.1.1] - 2018-12-28
+## [0.1.2] - 2018-12-28
 ### Fixed
 - Fix page extension check: allow extension in caps too.
 

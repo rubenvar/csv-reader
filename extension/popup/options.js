@@ -64,7 +64,7 @@ function checkExtension(tabs) {
     .split('#')[0]
     .substr(url.lastIndexOf('.'));
   // if not csv, error and out
-  if (ext !== '.csv' || ext !== '.CSV') {
+  if (ext !== '.csv' && ext !== '.CSV') {
     reportExecuteScriptError({ message: 'Not a .csv page' });
     return;
   }
