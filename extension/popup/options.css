@@ -6,17 +6,21 @@
 }*/
 
 :root {
-  --cl-details: #b9fff8;
+  --cl-dt: #b9fff8;
+  --cl-dt-light: #d6fffa;
+  --cl-acc: #ffb829;
+  --cl-acc-light: #ffd37a;
   --cl-bg: #fdfdfd;
-  --cl-accent: #ffb829;
   --cl-text: #2e1f00;
 }
 
 body {
   background: var(--cl-bg);
+  background: linear-gradient(225deg, var(--cl-dt-light), var(--cl-bg) 20%);
   padding: 20px;
 }
 
+h2,
 p,
 input,
 label,
@@ -35,8 +39,6 @@ p.intro {
 }
 
 h2 {
-  font-family: 'Muli', 'Arial', sans-serif;
-  color: var(--cl-text);
   margin: 0;
   margin-bottom: 26px;
   line-height: 1.3;
@@ -86,7 +88,7 @@ input {
 
 button {
   border-radius: 5px;
-  background: var(--cl-accent);
+  background: var(--cl-acc);
   border: none;
   padding: 15px 20px;
   margin-top: 10px;
@@ -97,16 +99,16 @@ button {
 }
 
 button:hover {
-  background: #ffd37a;
+  background: var(--cl-acc-light);
 }
 
 button.reset {
   height: 55px;
-  background: var(--cl-details);
+  background: var(--cl-dt);
 }
 
 button.reset:hover {
-  background: #d6fffa;
+  background: var(--cl-dt-light);
 }
 
 /* Error message handling */
