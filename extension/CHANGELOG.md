@@ -6,9 +6,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-### Changed
+### Changed
 
-- Search for '<pre>' tags and similar, and only process the content inside.
+- Search for "pre" tags and similar, and only process the content inside.
 - Update README with images and examples of usage.
 
 ### Added
@@ -16,7 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Icons for the browser button in dark and light colors.
 - Chrome polyfill.
 - If there is a title line, option to transform data into JSON and export.
-- If an item looks like link, add '<a>' tags.
+- If an item looks like link, add "a href" tags.
 - If page tries to download .csv, open them in the browser window anyway.
 
 ## [0.1.2] - 2018-12-28

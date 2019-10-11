@@ -7,20 +7,26 @@ function mainWork() {
 
   // Where eeeeverything happens
   // TODO: separate fn/file
+  function removeResult() {
+    const table = document.querySelector('.csv-table');
+
+    if (table) {
+      table.remove();
+    }
+  }
+
   function convertCSV(separator, titleLine, skipLines) {
     removeResult();
 
-    let tableContainer = document.createElement('div');
+    const tableContainer = document.createElement('div');
     tableContainer.className = 'csv-table';
 
     const html = document.body.innerHTML;
-    const htmlNoTags = html.replace(/\<\/?[a-z]+\>/gi, '');
+    const htmlNoTags = html.replace(/<\/?[a-z]+>/gi, '');
 
     const lineArray = htmlNoTags.split('\n');
 
-    const arrayOfLineArrays = lineArray.map(line => {
-      return line.split(separator === '' ? ',' : separator);
-    });
+    const arrayOfLineArrays = lineArray.map(line => line.split(separator === '' ? ',' : separator));
 
     let result = '';
 
@@ -38,14 +44,14 @@ function mainWork() {
     if (titleLine) {
       const titleLine = arrayOfLineArrays.splice(0, 1);
       let row = '<thead><tr>';
-      titleLine[0].forEach(item => (row += '<th>' + item + '</th>'));
+      titleLine[0].forEach(item => (row += `<th> ${item} </th>`));
       row += '</tr></thead><tbody>';
       result += row;
     }
 
     arrayOfLineArrays.forEach(array => {
       let row = '<tr>';
-      array.forEach(item => (row += '<td>' + item + '</td>'));
+      array.forEach(item => (row += `<td> ${item} </td>`));
       row += '</tr>';
       result += row;
     });
@@ -56,20 +62,12 @@ function mainWork() {
     document.body.appendChild(tableContainer);
   }
 
-  function removeResult() {
-    const table = document.querySelector('.csv-table');
-
-    if (table) {
-      table.remove();
-    }
-  }
-
   browser.runtime.onMessage.addListener(message => {
-    // const { command, separator, titleLine, skipLines } = message;
-    const command = message.command;
-    const separator = message.separator;
-    const titleLine = message.titleLine;
-    const skipLines = message.skipLines;
+    const { command, separator, titleLine, skipLines } = message;
+    // const command = message.command;
+    // const separator = message.separator;
+    // const titleLine = message.titleLine;
+    // const skipLines = message.skipLines;
 
     if (command === 'convert') {
       convertCSV(separator, titleLine, skipLines);

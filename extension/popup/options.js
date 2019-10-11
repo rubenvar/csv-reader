@@ -18,7 +18,7 @@ function listenForClicks() {
           separator,
           titleLine,
           skipLines,
-          command: 'convert'
+          command: 'convert',
         });
         // close the popup
         window.close();
@@ -58,15 +58,15 @@ function reportExecuteScriptError(error) {
 }
 
 function checkExtension(tabs) {
-  // get current tab and extension
-  let url = tabs[0].url;
-  let ext = (url = url.substr(1 + url.lastIndexOf('/')).split('?')[0])
+  // get current tab
+  let { url } = tabs[0];
+  // get extension in the end of url
+  const ext = (url = url.substr(1 + url.lastIndexOf('/')).split('?')[0])
     .split('#')[0]
     .substr(url.lastIndexOf('.'));
   // if not csv, error and out
   if (ext !== '.csv' && ext !== '.CSV') {
     reportExecuteScriptError({ message: 'Not a .csv page' });
-    return;
   }
 }
 
