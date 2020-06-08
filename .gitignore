@@ -1,7 +1,7 @@
 .DS_Store
 IDEAS.md
+TEST.md
 
 images/
-
+web-ext-artifacts/
 *.zip
-*.log
