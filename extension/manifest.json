@@ -3,7 +3,7 @@
   "name": "CSV Reader",
   "version": "0.1.2",
   "description": "Transforms raw csv data into a simple html table, easily readable on the browser",
-  "homepage_url": "https://github.com/ruben-vara/csv-reader",
+  "homepage_url": "https://github.com/rubenvar/csv-reader",
   "icons": {
     "48": "icons/csv-48.png"
   },
