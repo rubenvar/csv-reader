@@ -23,7 +23,7 @@
       { "dark": "icons/csv-32.png", "light": "icons/csv-light-32.png", "size": 32 }
     ]
   },
-  "applications": {
+  "browser_specific_settings": {
     "gecko": {
       "id": "hey@rubenvara.io"
     }
