@@ -5,14 +5,23 @@
   "description": "Transforms raw csv data into a simple html table, easily readable on the browser",
   "homepage_url": "https://github.com/rubenvar/csv-reader",
   "icons": {
-    "48": "icons/csv-48.png"
+    "48": "icons/csv-48.png",
+    "96": "icons/csv-96.png"
   },
   "permissions": ["tabs", "<all_urls>"],
   "browser_action": {
     "browser_style": true,
-    "default_icon": "icons/csv-48.png",
+    "default_icon": {
+      "16": "icons/csv-16.png",
+      "32": "icons/csv-32.png",
+      "64": "icons/csv-64.png"
+    },
+    "default_popup": "popup/options.html",
     "default_title": "CSV Reader",
-    "default_popup": "popup/options.html"
+    "theme_icons": [
+      { "dark": "icons/csv-16.png", "light": "icons/csv-light-16.png", "size": 16 },
+      { "dark": "icons/csv-32.png", "light": "icons/csv-light-32.png", "size": 32 }
+    ]
   },
   "applications": {
     "gecko": {
