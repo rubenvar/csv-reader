@@ -9,7 +9,7 @@
     "48": "icons/csv-48.png",
     "96": "icons/csv-96.png"
   },
-  "permissions": ["tabs", "<all_urls>"],
+  "permissions": ["activeTab"],
   "browser_action": {
     "browser_style": true,
     "default_icon": {
