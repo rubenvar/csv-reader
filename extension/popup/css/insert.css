@@ -1,27 +1,39 @@
+body {
+  margin: 0;
+  padding: 0;
+}
 body > :not(.csv-table) {
   display: none;
 }
 
+.csv-table {
+  padding: 7px;
+}
+
 table {
-  border: 5px solid #0039fe;
-  font-family: "Arial", sans-serif;
+  border: 5px solid #ffcf0acc;
+  border-top: 0;
+  font-family: -apple-system, "Segoe UI", Oxygen, Ubuntu, "Open Sans", "Helvetica Neue", sans-serif;
+  border-spacing: 1px 0;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
-tr {
-  transition: background 0.3s;
+thead tr {
+  background-color: #ffcf0acc;
 }
 
-tr:nth-child(odd) {
+tbody tr:nth-child(even) {
   background: #eee;
 }
 
-tr:hover {
-  background-color: #ffcf0055;
+tbody tr:hover {
+  transition: background 0.3s;
+  background-color: #ffcf0a55;
 }
 
 td,
 th {
-  padding: 2px;
+  padding: 4px 7px 3px;
   border: none;
   margin: 0;
 }
