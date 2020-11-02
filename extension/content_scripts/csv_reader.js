@@ -2,6 +2,13 @@ window.browser = (function() {
   return window.msBrowser || window.browser || window.chrome;
 })();
 
+// helper
+function htmlDecode(input) {
+  const doc = new DOMParser().parseFromString(input, 'text/html');
+  return doc.documentElement.textContent;
+}
+
+// Where eeeeverything happens
 function mainWork() {
   // Avoid injecting script more than once
   if (window.hasRun) {
@@ -9,17 +16,17 @@ function mainWork() {
   }
   window.hasRun = true;
 
-  // Where eeeeverything happens
-  // TODO: separate fn/file
+  // remove previous tables
   function removeResult() {
     const table = document.querySelector('.csv-table');
-
     if (table) {
       table.remove();
     }
   }
 
-  function convertCSV(separator, titleLine, skipLines) {
+  // parses the content, replaces it with an html table
+  function convertCSV(inputSeparator, titleLine, skipLines) {
+    const urlRegex = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
     removeResult();
 
     const tableContainer = document.createElement('div');
@@ -28,44 +35,91 @@ function mainWork() {
     const html = document.body.innerHTML;
     const htmlNoTags = html.replace(/<\/?[a-z]+>/gi, '');
 
-    const lineArray = htmlNoTags.split('\n');
+    const allRows = htmlNoTags.split('\n');
 
-    const arrayOfLineArrays = lineArray.map(line =>
-      line.split(separator === '' ? ',' : separator)
-    );
-
+    // string where the whole html will be stored
     let result = '';
 
     if (skipLines > 0) {
-      const skippedInfo = arrayOfLineArrays.splice(0, skipLines);
-      // skipped text/info into its own div on top
-      result += `<div class="text">${skippedInfo}</div>`;
+      const skippedText = allRows.splice(0, skipLines);
+      // skipped text into its own div on top
+      result += `<div class="skipped-text">${skippedText.join('<br />')}</div>`;
     }
 
+    // some data about the table will be here after parsing
+    result += '<div id="table-data"></div>';
+
+    // TODO maybe improve this process to be more resilient?
     // build the output table HTML chain manually here:
-    // TODO: improve this to be more resilient (and follow 🤣 best-practices)
     result += '<table>';
 
+    // TODO try to guess the separator instead of hard-coding a ','
+    const separator = inputSeparator === '' ? ',' : inputSeparator;
+    // escape the 'pipe' as it works as a boolean in a regex 😱
+    const separatorRegex = new RegExp(separator === '|' ? '\\|' : separator);
+
+    // parse allllll rows
+    const arrayOfAllRows = allRows.map((line, i) => {
+      // decode html entities safely
+      line = htmlDecode(line);
+
+      // empty row
+      const row = [];
+      // string parsed and to be stored
+      let prev = '';
+      // flag to keep track if inside of quotes
+      let insideQuotes = false;
+
+      // for each line, analyze each character (could be done faster?)
+      [...line].forEach((c, j) => {
+        // if it's not the separator outside a string, nor a quote store char
+        if ((!separatorRegex.test(c) || insideQuotes) && !/"/.test(c))
+          prev += c;
+        // quote found, change the flag
+        if (/"/.test(c)) insideQuotes = !insideQuotes;
+        // separator found OUTSIDE quotes, push stored to array and clear it
+        if (separatorRegex.test(c) && !insideQuotes) {
+          row.push(prev);
+          prev = '';
+        }
+        // end of line, push last value to array
+        if (j === line.length - 1) row.push(prev);
+      });
+
+      // return array
+      return row;
+    });
+
     // TODO: find a better way without mutating the array
+    // add the table head
     if (titleLine) {
-      const titleLine = arrayOfLineArrays.splice(0, 1);
+      const titleRow = arrayOfAllRows.splice(0, 1);
       let row = '<thead><tr>';
-      titleLine[0].forEach(item => (row += `<th> ${item} </th>`));
+      titleRow[0].forEach(item => (row += `<th>${item}</th>`));
       row += '</tr></thead><tbody>';
       result += row;
     }
 
-    arrayOfLineArrays.forEach(array => {
+    // add each row
+    arrayOfAllRows.forEach(array => {
       let row = '<tr>';
-      array.forEach(item => (row += `<td> ${item} </td>`));
+      array.forEach(item => (row += `<td>${item}</td>`));
       row += '</tr>';
       result += row;
     });
 
+    // close table
     result += '</tbody></table>';
 
     tableContainer.innerHTML = result;
+
     document.body.appendChild(tableContainer);
+
+    document.getElementById('table-data').innerHTML = `<p>
+      Total rows: ${arrayOfAllRows.length}<br />
+      Total columns: ${arrayOfAllRows[1].length}<br />
+      Separator: ${separator}
+      </p>`;
   }
 
   // console.log('CSV Reader Script Started');
