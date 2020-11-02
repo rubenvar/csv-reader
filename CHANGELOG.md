@@ -2,6 +2,23 @@
 
 All notable changes to the CSV Reader project will be documented in this file.
 
+## [0.3.0] - 2020-11-02
+
+CSV Reader is now available for Chrome too! 🎊
+
+### Added
+
+- Added [a polyfill](https://github.com/mozilla/webextension-polyfill) for Promises in chrome, for the `browser.tabs` object.
+- Added [a function](https://www.smashingmagazine.com/2017/04/browser-extension-edge-chrome-firefox-opera-brave-vivaldi/) to replace `window.browser` with the correct option for each browser (`browser`, `chrome` or `msBrowser`).
+
+### Changed
+
+- Tweak styling in the formatted table (`border-color`, etc). More coming soon.
+
+### Removed
+
+- Remove the `browser-specific-settings` key in `manifest.json`. It throws a warning in Chrome, and it's not really needed in Firefox.
+
 ## [0.2.0] - 2020-10-26
 
 ### Added
