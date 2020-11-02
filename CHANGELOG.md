@@ -13,6 +13,7 @@ CSV Reader is now available for Chrome too! 🎊
 
 ### Changed
 
+- Change extension permissions: only `activeTab` now, the rest were not needed.
 - Tweak styling in the formatted table (`border-color`, etc). More coming soon.
 
 ### Removed
