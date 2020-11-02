@@ -67,6 +67,6 @@ Some features I'd like to work on (help appreciated):
 - [ ] Ask users in the result page to leave a 5⭐ review please.
 - [x] Remove `""` from the strings if they are at begining and end of string.
 - [ ] Add css file to the main page to style the table.
-- [ ] 'Doesn't work here' message: add 'if you feel this is an error please report it'.
+- [x] 'Doesn't work here' message: add 'if you feel this is an error please report it'.
 - [ ] Make columns hideable.
 - [ ] If there is a title line, add option to transform data into JSON and export.
