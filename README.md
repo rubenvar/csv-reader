@@ -33,6 +33,24 @@ _CSV Reader_ allows you to look at the data formatted as a table, so you can mak
    3. Input the number of lines to skip on top. csv pages have a few lines with info at the top, we don't want to format those.
 4. Done, enjoy the table!
 
+### Example
+
+Visit [this csv sample dataset](https://rubenvara.s3-eu-west-1.amazonaws.com/csv/dataNov-2-2020.csv).
+
+Click on the CSV Reader extension icon.
+
+In the popup, input `|` (pipe) as the separator, and check the title line option:
+
+![Start](/docs/init.png)
+
+Click "Convert":
+
+![Converted](/docs/table.png)
+
+To go back to the raw data, click the "Reset" button on the extension popup:
+
+![Reset](/docs/reset.png)
+
 ## Some kind of roadmap...
 
 Some features I'd like to work on (help appreciated):
