@@ -57,6 +57,7 @@ Some features I'd like to work on (help appreciated):
 
 - [ ] Chrome version.
 - [x] Improve the browser icons.
+- [ ] Style the table row on hover.
 - [ ] Detect if text _looks like a link_ and add `<a>` tags.
 - [x] Update README and Firefox page with images and examples of usage.
 - [ ] If separator is also in text, between `"`, detect and don't use as separator.
