@@ -7,3 +7,4 @@ __test-files__/
 images/
 web-ext-artifacts/
 *.zip
+browser-polyfill.min.js
