@@ -31,7 +31,7 @@
           <input type="number" name="skip-lines" id="skip-lines" placeholder="3">
         </div>
         <div class="form-item">
-          <label for="has-links">🔗 Check if there are links in the data</label>
+          <label for="has-links">🔗 Check if there are links/emails in the data</label>
           <input type="checkbox" name="has-links" id="has-links" value="hasLinks">
         </div>
         <button class="button convert" id="options-submit">🌟 Convert!</button>
@@ -48,8 +48,12 @@
   </div>
 
   <div id="error-content" class="hidden">
-    <p>This doesn't seem to work here...</p>
-    <p>Try a different page.</p>
+    <p>⚠️ This doesn't seem to work here, please try a different page...</p>
+    <br>
+    <hr>
+    <p>Is this an error? 🙇‍♂️ I apologize. Please <a href="https://github.com/rubenvar/csv-reader/issues"
+        target="_blank" rel="nofollow noopener noreferrer">report it</a>
+      and I will look into it</p>
   </div>
 
   <script type="application/javascript" src="/polyfills/browser-polyfill.min.js"></script>
