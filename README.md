@@ -44,7 +44,6 @@ Some features I'd like to work on (help appreciated):
 - [ ] If separator is also in text, between `"`, detect and don't use as separator.
 - [ ] Try to auto-detect separator.
 - [ ] Add some useful data in the result page (number of rows and columns, etc.).
-- [ ] Add `newlines` correctly to the text skipped on top so it's readable.
 - [ ] Ask users in the result page to leave a 5⭐ review please.
 - [ ] Remove `"` from the strings if they are at begining and end of string.
 - [ ] Add css file to the main page to style the table.
