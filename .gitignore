@@ -5,6 +5,11 @@ TEST.md
 __test-files__/
 
 images/
+
 web-ext-artifacts/
+chrome-web-store/
+*.crx
+*.pem
 *.zip
+
 browser-polyfill.min.js
