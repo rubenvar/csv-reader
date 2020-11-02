@@ -2,6 +2,17 @@
 
 All notable changes to the CSV Reader project will be documented in this file.
 
+## [0.4.0] - 2020-11-03
+
+### Added
+
+- Some useful data is now shown at the top of the table (number of rows, etc.).
+- Remove quotes from the strings after parsing them.
+
+### Fixed
+
+- The extension now recognizes the separator character inside a string and does not treat it as a separator (it does not split the string in that position).
+
 ## [0.3.0] - 2020-11-02
 
 CSV Reader is now available for Chrome too! 🎊

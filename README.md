@@ -1,6 +1,6 @@
 # CSV Reader
 
-🚧 Work in Progress...🚧
+🚧 Work in Progress... 🚧
 
 ## What is this?
 
@@ -19,7 +19,7 @@ _CSV Reader_ allows you to look at the data formatted as a table, so you can mak
 
 ## Features
 
-- Detects if the current tab is a .csv page.
+- Detects if the current tab is a `.csv` page.
 - Allos user input for the separator, if there is a title line, and lines to skip on top.
 - It will transform the raw data into a table, nicely formatted so it's easy to scan.
 
@@ -59,13 +59,13 @@ Some features I'd like to work on (help appreciated):
 - [x] Improve the browser icons.
 - [x] Style the table row on hover.
 - [ ] Show progress: while the content is being processed, hide it and show a loading component.
-- [ ] If separator is also in text, between `"`, detect and don't use as separator.
+- [x] If separator is also in text, between `""`, detect and don't use as separator.
 - [ ] Detect if text _looks like a link_ and add `<a>` tags.
 - [x] Update README and Firefox page with images and examples of usage.
 - [ ] Try to auto-detect separator.
-- [ ] Add some useful data in the result page (number of rows and columns, etc.).
+- [x] Add some useful data in the result page (number of rows and columns, etc.).
 - [ ] Ask users in the result page to leave a 5⭐ review please.
-- [ ] Remove `"` from the strings if they are at begining and end of string.
+- [x] Remove `""` from the strings if they are at begining and end of string.
 - [ ] Add css file to the main page to style the table.
 - [ ] 'Doesn't work here' message: add 'if you feel this is an error please report it'.
 - [ ] Make columns hideable.
