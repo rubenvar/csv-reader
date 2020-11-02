@@ -1,3 +1,7 @@
+window.browser = (function() {
+  return window.msBrowser || window.browser || window.chrome;
+})();
+
 function mainWork() {
   // Avoid injecting script more than once
   if (window.hasRun) {
@@ -26,7 +30,9 @@ function mainWork() {
 
     const lineArray = htmlNoTags.split('\n');
 
-    const arrayOfLineArrays = lineArray.map(line => line.split(separator === '' ? ',' : separator));
+    const arrayOfLineArrays = lineArray.map(line =>
+      line.split(separator === '' ? ',' : separator)
+    );
 
     let result = '';
 
@@ -62,12 +68,10 @@ function mainWork() {
     document.body.appendChild(tableContainer);
   }
 
+  // console.log('CSV Reader Script Started');
+
   browser.runtime.onMessage.addListener(message => {
     const { command, separator, titleLine, skipLines } = message;
-    // const command = message.command;
-    // const separator = message.separator;
-    // const titleLine = message.titleLine;
-    // const skipLines = message.skipLines;
 
     if (command === 'convert') {
       convertCSV(separator, titleLine, skipLines);

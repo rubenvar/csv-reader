@@ -1,6 +1,10 @@
 const popup = document.querySelector('#csv-reader-popup');
 const buttons = popup.querySelectorAll('.button');
 
+window.browser = (function() {
+  return window.msBrowser || window.browser || window.chrome;
+})();
+
 function listenForClicks() {
   buttons.forEach(button => {
     // click in popup buttons only
@@ -8,7 +12,7 @@ function listenForClicks() {
       e.preventDefault();
 
       function processCSV(tabs) {
-        browser.tabs.insertCSS({ file: 'css/insert.css' });
+        browser.tabs.insertCSS({ file: '/popup/css/insert.css' });
 
         const separator = document.querySelector('#separator').value;
         const titleLine = document.querySelector('#title-line').checked;
@@ -25,7 +29,10 @@ function listenForClicks() {
       }
 
       function reset(tabs) {
-        browser.tabs.removeCSS({ file: 'css/insert.css' });
+        // ? .removeCSS doesn't work in Chrome: it's still in beta. It works well in Firefox
+        // browser.tabs.removeCSS({ file: '/popup/css/insert.css' });
+        // ? so for now reseting the tab just reloads it... 🤷‍♂️ meh
+        browser.tabs.reload();
         browser.tabs.sendMessage(tabs[0].id, { command: 'reset' });
 
         window.close();
@@ -82,4 +89,5 @@ browser.tabs
   .then(listenForClicks)
   .catch(reportExecuteScriptError);
 
+// go
 listenForClicks();
