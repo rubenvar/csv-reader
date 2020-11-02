@@ -3,12 +3,20 @@ body > :not(.csv-table) {
 }
 
 table {
-  border: 5px solid #ffb829;
-  font-family: 'Arial', sans-serif;
+  border: 5px solid #0039fe;
+  font-family: "Arial", sans-serif;
+}
+
+tr {
+  transition: background 0.3s;
 }
 
 tr:nth-child(odd) {
   background: #eee;
+}
+
+tr:hover {
+  background-color: #ffcf0055;
 }
 
 td,
