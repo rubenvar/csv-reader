@@ -20,7 +20,7 @@
         <h2>🖊️ Just need a couple of details</h2>
         <div class="form-item">
           <label for="separator">🚧 What is the separator?</label>
-          <input type="text" name="separator" id="separator" placeholder=";" required autofocus>
+          <input type="text" name="separator" id="separator" placeholder="," required autofocus>
         </div>
         <div class="form-item">
           <label for="title-line">🎩 Check if there is a first title line</label>
@@ -29,6 +29,10 @@
         <div class="form-item">
           <label for="skip-lines">✂️ Number of lines to skip at the top</label>
           <input type="number" name="skip-lines" id="skip-lines" placeholder="3">
+        </div>
+        <div class="form-item">
+          <label for="has-links">🔗 Check if there are links in the data</label>
+          <input type="checkbox" name="has-links" id="has-links" value="hasLinks">
         </div>
         <button class="button convert" id="options-submit">🌟 Convert!</button>
       </form>
