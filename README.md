@@ -55,18 +55,18 @@ To go back to the raw data, click the "Reset" button on the extension popup:
 
 Some features I'd like to work on (help appreciated):
 
-- [ ] Chrome version.
+- [x] Chrome version.
 - [x] Improve the browser icons.
-- [ ] Style the table row on hover.
+- [x] Style the table row on hover.
+- [ ] Show progress: while the content is being processed, hide it and show a loading component.
+- [ ] If separator is also in text, between `"`, detect and don't use as separator.
 - [ ] Detect if text _looks like a link_ and add `<a>` tags.
 - [x] Update README and Firefox page with images and examples of usage.
-- [ ] If separator is also in text, between `"`, detect and don't use as separator.
 - [ ] Try to auto-detect separator.
 - [ ] Add some useful data in the result page (number of rows and columns, etc.).
 - [ ] Ask users in the result page to leave a 5⭐ review please.
 - [ ] Remove `"` from the strings if they are at begining and end of string.
 - [ ] Add css file to the main page to style the table.
 - [ ] 'Doesn't work here' message: add 'if you feel this is an error please report it'.
-- [ ] While it is processing the content, hide the content already but show a loading component.
 - [ ] Make columns hideable.
 - [ ] If there is a title line, add option to transform data into JSON and export.
