@@ -4,9 +4,18 @@
 
 ## What is this?
 
-This Firefox Extension will transform raw .csv data into a simple html table, and show it online in the same tab.
+A Firefox extension.
 
-This way you don't need to download any file and deal with opening it in Numbers, Excel, etc., nor try to go through the data in its raw state.
+It will transform raw `csv` data into a simple `html` table, and show it online in the same tab.
+
+### What problem does this solve?
+
+When quickly looking through csv data files online, you either have to:
+
+- Open them with Excel, Numbers, etc.
+- Try to skim through the data in its raw state.
+
+_CSV Reader_ allows you to look at the data formatted as a table, so you can make decisions faster.
 
 ## Features
 
@@ -14,17 +23,32 @@ This way you don't need to download any file and deal with opening it in Numbers
 - Allos user input for the separator, if there is a title line, and lines to skip on top.
 - It will transform the raw data into a table, nicely formatted so it's easy to scan.
 
+## How to use
+
+1. In Firefox, head to [the extension page](https://addons.mozilla.org/addon/csv-reader/) and install it. (Sorry, Chrome extension coming soon).
+2. Head to any `.csv` data page.
+3. Click on the extension icon, fill the form:
+   1. Choose the _separator_.
+   2. Check if there is a title row for the data. This will format a header row in the table.
+   3. Input the number of lines to skip on top. csv pages have a few lines with info at the top, we don't want to format those.
+4. Done, enjoy the table!
+
 ## Some kind of roadmap...
 
-- [ ] Chrome polyfill.
-- [ ] Improve the browser icons.
+Some features I'd like to work on (help appreciated):
+
+- [ ] Chrome version.
+- [x] Improve the browser icons.
 - [ ] Detect if text _looks like a link_ and add `<a>` tags.
-- [ ] Update README and Firefox page with images and examples of usage.
+- [x] Update README and Firefox page with images and examples of usage.
 - [ ] If separator is also in text, between `"`, detect and don't use as separator.
-- [ ] Try to detect separator.
+- [ ] Try to auto-detect separator.
+- [ ] Add some useful data in the result page (number of rows and columns, etc.).
+- [ ] Add `newlines` correctly to the text skipped on top so it's readable.
+- [ ] Ask users in the result page to leave a 5⭐ review please.
 - [ ] Remove `"` from the strings if they are at begining and end of string.
 - [ ] Add css file to the main page to style the table.
 - [ ] 'Doesn't work here' message: add 'if you feel this is an error please report it'.
-- [ ] While it is processing the content, hide the content but show a loading component.
+- [ ] While it is processing the content, hide the content already but show a loading component.
+- [ ] Make columns hideable.
 - [ ] If there is a title line, add option to transform data into JSON and export.
-- [ ] Make columns hideable when click on top (small eye icon?).
