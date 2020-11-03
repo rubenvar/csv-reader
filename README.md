@@ -68,7 +68,7 @@ Some features I'd like to work on (help appreciated):
 - [ ] Show progress: while the content is being processed, hide it and show a loading component.
 - [x] If separator is also in text, between `""`, detect and don't use as separator.
 - [x] Add `<a>` tags to links if they are links (regex) and the config option is checked in the popup.
-- [ ] Detect if text _looks like a link_
+- [ ] Detect if text _looks like a link_.
 - [x] Update README and Firefox page with images and examples of usage.
 - [ ] Try to auto-detect separator.
 - [x] Add some useful data in the result page (number of rows and columns, etc.).
