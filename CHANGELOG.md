@@ -9,6 +9,7 @@ All notable changes to the CSV Reader project will be documented in this file.
 - Some useful data is now shown at the top of the table (number of rows, etc.).
 - Remove quotes from the strings after parsing them.
 - Added a link in the 'Doesn't work here' message to report if it's an error.
+- Added `<a>` tags to links (regex) if config option is checked in the popup.
 
 ### Fixed
 

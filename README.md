@@ -19,9 +19,16 @@ _CSV Reader_ allows you to look at the data formatted as a table, so you can mak
 
 ## Features
 
-- Detects if the current tab is a `.csv` page.
-- Allos user input for the separator, if there is a title line, and lines to skip on top.
-- It will transform the raw data into a table, nicely formatted so it's easy to scan.
+CSV Reader detects if the current tab is a `.csv` page (correctly most of the time).
+
+Allows user to input some settings:
+
+- Separator (defaults to `,`).
+- Title line option (defaults to `false`). If checked, first line of csv will be the table header.
+- Number of lines to skip on top (defaults to `0`). Useful if data has additional info on top.
+- Check for links option (defaults to `false`). If checked, links in data will be clickable.
+
+It transforms the raw `csv` data into a table, nicely formatted so it's easy to scan (see images below).
 
 ## How to use
 
@@ -60,7 +67,8 @@ Some features I'd like to work on (help appreciated):
 - [x] Style the table row on hover.
 - [ ] Show progress: while the content is being processed, hide it and show a loading component.
 - [x] If separator is also in text, between `""`, detect and don't use as separator.
-- [ ] Detect if text _looks like a link_ and add `<a>` tags.
+- [x] Add `<a>` tags to links if they are links (regex) and the config option is checked in the popup.
+- [ ] Detect if text _looks like a link_
 - [x] Update README and Firefox page with images and examples of usage.
 - [ ] Try to auto-detect separator.
 - [x] Add some useful data in the result page (number of rows and columns, etc.).
@@ -68,5 +76,6 @@ Some features I'd like to work on (help appreciated):
 - [x] Remove `""` from the strings if they are at begining and end of string.
 - [ ] Add css file to the main page to style the table.
 - [x] 'Doesn't work here' message: add 'if you feel this is an error please report it'.
+- [ ] Try to stop .csv files from downloading, and instead open them in browser so thay can be converted.
 - [ ] Make columns hideable.
 - [ ] If there is a title line, add option to transform data into JSON and export.
