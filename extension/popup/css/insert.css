@@ -10,10 +10,33 @@ body > :not(.csv-table) {
   padding: 7px;
 }
 
+.skipped-text {
+  font-family: monospace;
+}
+
+#table-data {
+  font-family: -apple-system, "Segoe UI", Oxygen, Ubuntu, "Open Sans", "Helvetica Neue", sans-serif;
+  padding: 15px 0;
+}
+
+#table-data p {
+  margin: 0;
+  color: #444;
+  line-height: 1.5;
+}
+
+#table-data .result {
+  font-family: monospace;
+  background: #ddd;
+  padding: 2px 3px 1px;
+  border-radius: 5px;
+}
+
 table {
   border: 5px solid #ffcf0acc;
   border-top: 0;
   font-family: -apple-system, "Segoe UI", Oxygen, Ubuntu, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 15px;
   border-spacing: 1px 0;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }

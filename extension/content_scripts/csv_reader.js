@@ -124,11 +124,26 @@ function mainWork() {
 
     document.body.appendChild(tableContainer);
 
+    // add table info
     document.getElementById('table-data').innerHTML = `<p>
-      Total rows: ${arrayOfAllRows.length}<br />
-      Total columns: ${arrayOfAllRows[1].length}<br />
-      Separator: ${separator}
+      Total rows: <span class="result">${new Intl.NumberFormat('en-US', {
+        style: 'decimal',
+      }).format(arrayOfAllRows.length)}</span>
+      <br />
+      Total columns: <span class="result">${arrayOfAllRows[1].length}</span>
+      <br />
+      Separator: <span class="result">${separator}</span>
       </p>`;
+
+    // add ask for review please 🙏
+    document.getElementById(
+      'table-data'
+    ).innerHTML += `<br /><p>⭐ If this Extension was useful, please consider spending <em>${Math.floor(
+      Math.random() * 31
+    ) +
+      30} seconds</em> leaving a 5-star review (<a href="#" target="_blank" rel="nofollow noreferrer noopener">chrome</a>, <a href="https://addons.mozilla.org/es/firefox/addon/csv-reader/" target="_blank" rel="nofollow noreferrer noopener">firefox</a>).
+      <br />
+      🎁 It would mean a lot!</p><br />`;
   }
 
   // console.log('CSV Reader Script Started');
