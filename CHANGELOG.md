@@ -2,7 +2,7 @@
 
 All notable changes to the CSV Reader project will be documented in this file.
 
-## [0.4.0]
+## [0.4.0] - Unpublished
 
 ### Added
 
