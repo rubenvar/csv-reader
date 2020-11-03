@@ -25,8 +25,8 @@ function mainWork() {
   }
 
   // parses the content, replaces it with an html table
-  function convertCSV(inputSeparator, titleLine, skipLines) {
-    const urlRegex = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
+  function convertCSV(inputSeparator, titleLine, skipLines, hasLinks) {
+    const urlRegex = /^(http(s)?:\/\/.)?(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
     removeResult();
 
     const tableContainer = document.createElement('div');
@@ -100,10 +100,19 @@ function mainWork() {
       result += row;
     }
 
+    // let columnWithLinks;
+
     // add each row
     arrayOfAllRows.forEach(array => {
       let row = '<tr>';
-      array.forEach(item => (row += `<td>${item}</td>`));
+      array.forEach(
+        item =>
+          (row += `<td>${
+            hasLinks && urlRegex.test(item)
+              ? `<a href=${item} target="_blank" rel="noopener noreferrer nofollow">${item}</a>`
+              : item
+          }</td>`)
+      );
       row += '</tr>';
       result += row;
     });
@@ -125,10 +134,11 @@ function mainWork() {
   // console.log('CSV Reader Script Started');
 
   browser.runtime.onMessage.addListener(message => {
-    const { command, separator, titleLine, skipLines } = message;
+    const { command, separator, titleLine, skipLines, hasLinks } = message;
 
     if (command === 'convert') {
-      convertCSV(separator, titleLine, skipLines);
+      // TODO pass all options in a single config object
+      convertCSV(separator, titleLine, skipLines, hasLinks);
     } else if (command === 'reset') {
       removeResult();
     }

@@ -1,47 +1,49 @@
-const popup = document.querySelector('#csv-reader-popup');
+const popup = document.getElementById('csv-reader-popup');
 const buttons = popup.querySelectorAll('.button');
 
 window.browser = (function() {
   return window.msBrowser || window.browser || window.chrome;
 })();
 
+function processCSV(tabs) {
+  const separator = document.getElementById('separator').value;
+  const titleLine = document.getElementById('title-line').checked;
+  const skipLines = document.getElementById('skip-lines').value;
+  const hasLinks = document.getElementById('has-links').checked;
+
+  browser.tabs.insertCSS({ file: '/popup/css/insert.css' });
+
+  browser.tabs.sendMessage(tabs[0].id, {
+    separator,
+    titleLine,
+    skipLines,
+    hasLinks,
+    command: 'convert',
+  });
+  // close the popup
+  window.close();
+}
+
+function reset(tabs) {
+  // ? .removeCSS doesn't work in Chrome: it's still in beta. It works well in Firefox
+  // browser.tabs.removeCSS({ file: '/popup/css/insert.css' });
+  // ? so for now reseting the tab just reloads it... 🤷‍♂️ meh
+  browser.tabs.reload();
+
+  browser.tabs.sendMessage(tabs[0].id, { command: 'reset' });
+
+  window.close();
+}
+
+function reportError(error) {
+  console.error(`Could not read CSV: ${error}`);
+}
+
 function listenForClicks() {
   buttons.forEach(button => {
     // click in popup buttons only
     button.addEventListener('click', e => {
       e.preventDefault();
-
-      function processCSV(tabs) {
-        browser.tabs.insertCSS({ file: '/popup/css/insert.css' });
-
-        const separator = document.querySelector('#separator').value;
-        const titleLine = document.querySelector('#title-line').checked;
-        const skipLines = document.querySelector('#skip-lines').value;
-
-        browser.tabs.sendMessage(tabs[0].id, {
-          separator,
-          titleLine,
-          skipLines,
-          command: 'convert',
-        });
-        // close the popup
-        window.close();
-      }
-
-      function reset(tabs) {
-        // ? .removeCSS doesn't work in Chrome: it's still in beta. It works well in Firefox
-        // browser.tabs.removeCSS({ file: '/popup/css/insert.css' });
-        // ? so for now reseting the tab just reloads it... 🤷‍♂️ meh
-        browser.tabs.reload();
-        browser.tabs.sendMessage(tabs[0].id, { command: 'reset' });
-
-        window.close();
-      }
-
-      function reportError(error) {
-        console.error(`Could not read CSV: ${error}`);
-      }
-
       if (e.target.classList.contains('convert')) {
         browser.tabs
           .query({ active: true, currentWindow: true })
@@ -77,6 +79,7 @@ function checkExtension(tabs) {
   }
 }
 
+// TODO maybe should only do the 'executeScript' if the extension is correct? could concatenate both things??
 // start checking for the filetype
 browser.tabs
   .query({ active: true, currentWindow: true })
@@ -90,4 +93,4 @@ browser.tabs
   .catch(reportExecuteScriptError);
 
 // go
-listenForClicks();
+// listenForClicks();
