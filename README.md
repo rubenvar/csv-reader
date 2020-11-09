@@ -4,9 +4,11 @@
 
 ## What is this?
 
-A Firefox extension.
+A browser extension.
 
 It will transform raw `csv` data into a simple `html` table, and show it online in the same tab.
+
+Available free for [Chrome](https://chrome.google.com/webstore/detail/csv-reader/dnioinfbhmclclfdbcnlfgbojdpdicde) and [Firefox](https://addons.mozilla.org/es/firefox/addon/csv-reader/).
 
 ### What problem does this solve?
 
@@ -32,7 +34,7 @@ It transforms the raw `csv` data into a table, nicely formatted so it's easy to 
 
 ## How to use
 
-1. In Firefox, head to [the extension page](https://addons.mozilla.org/addon/csv-reader/) and install it. (Sorry, Chrome extension coming soon).
+1. Head to the extension page(in [Chrome](https://chrome.google.com/webstore/detail/csv-reader/dnioinfbhmclclfdbcnlfgbojdpdicde) or [Firefox](https://addons.mozilla.org/es/firefox/addon/csv-reader/)) and install it.
 2. Head to any `.csv` data page.
 3. Click on the extension icon, fill the form:
    1. Choose the _separator_.
