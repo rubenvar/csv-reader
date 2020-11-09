@@ -16,7 +16,13 @@ body > :not(.csv-table) {
 
 #table-data {
   font-family: -apple-system, "Segoe UI", Oxygen, Ubuntu, "Open Sans", "Helvetica Neue", sans-serif;
-  padding: 15px 0;
+  padding: 15px;
+  background-color: #eee;
+}
+
+#table-data h3 {
+  color: #444;
+  margin: 0 0 10px 0;
 }
 
 #table-data p {
