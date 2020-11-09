@@ -2,17 +2,21 @@
 
 All notable changes to the CSV Reader project will be documented in this file.
 
-## [0.4.0] - Unpublished
+## [0.4.0] - Unreleased
 
 ### Added
 
-- Some useful data is now shown at the top of the table (number of rows, etc.).
 - Remove quotes from the strings after parsing them.
 - Added a link in the 'Doesn't work here' message to report if it's an error.
 - Added `<a>` tags to links (regex) if config option is checked in the popup.
-- Added a prompt to ask the user for a 5-star review atthe top of the table.
+- Some useful data is now shown at the top of the table (number of rows, etc.).
+- Added a prompt to ask the user for a 5-star review at the top of the table.
 
-### Fixed
+### Changed
+
+- Improved the styling of the table: changed the font-family, it has a header background color, border color, box-shadow, etc.
+
+### Fixed (finally) 🎊
 
 - The extension now recognizes the separator character inside a string and does not treat it as a separator (it does not split the string in that position).
 
