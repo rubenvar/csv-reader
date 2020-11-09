@@ -4,6 +4,8 @@ All notable changes to the CSV Reader project will be documented in this file.
 
 ## [0.4.0] - Unreleased
 
+🎊 Now available in Chrome too!
+
 ### Added
 
 - Remove quotes from the strings after parsing them.
