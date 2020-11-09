@@ -40,14 +40,14 @@ function mainWork() {
     // string where the whole html will be stored
     let result = '';
 
+    // some data about the table will be here after parsing
+    result += '<div id="table-data"></div>';
+
     if (skipLines > 0) {
       const skippedText = allRows.splice(0, skipLines);
       // skipped text into its own div on top
       result += `<div class="skipped-text">${skippedText.join('<br />')}</div>`;
     }
-
-    // some data about the table will be here after parsing
-    result += '<div id="table-data"></div>';
 
     // TODO maybe improve this process to be more resilient?
     // build the output table HTML chain manually here:
@@ -136,14 +136,13 @@ function mainWork() {
       </p>`;
 
     // add ask for review please 🙏
-    document.getElementById(
-      'table-data'
-    ).innerHTML += `<br /><p>⭐ If this Extension was useful, please consider spending <em>${Math.floor(
-      Math.random() * 31
-    ) +
-      30} seconds</em> leaving a 5-star review (<a href="#" target="_blank" rel="nofollow noreferrer noopener">chrome</a>, <a href="https://addons.mozilla.org/es/firefox/addon/csv-reader/" target="_blank" rel="nofollow noreferrer noopener">firefox</a>).
+    document.getElementById('table-data').innerHTML += `
       <br />
-      🎁 It would mean a lot!</p><br />`;
+      <h3>⭐ Was this Extension useful?</h3>
+      <p>🙏 Please consider spending <em>${Math.floor(Math.random() * 31) +
+        30} seconds</em> leaving a 5-star review (in <a href="https://chrome.google.com/webstore/detail/csv-reader/dnioinfbhmclclfdbcnlfgbojdpdicde" target="_blank" rel="nofollow noreferrer noopener">Chrome</a>, or <a href="https://addons.mozilla.org/es/firefox/addon/csv-reader/" target="_blank" rel="nofollow noreferrer noopener">Firefox</a>).
+      <br />
+      🎁 It would mean a lot!</p>`;
   }
 
   // console.log('CSV Reader Script Started');
