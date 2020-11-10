@@ -7,6 +7,7 @@ All notable changes to the CSV Reader project will be documented in this file.
 ### Fixed
 
 - Improved the URL detection regex: now it accepts urls with lower and upper case.
+- Removed _skip lines on top_ input placeholder to avoid confussion (it showed `3`, but the default is `0`...).
 
 ## [0.4.0] - 2020-11-09
 
