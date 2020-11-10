@@ -29,10 +29,24 @@ function reset(tabs) {
   // browser.tabs.removeCSS({ file: '/popup/css/insert.css' });
   // ? so for now reseting the tab just reloads it... 🤷‍♂️ meh
   browser.tabs.reload();
-
+  // ? so probably no need to send any command then...
   browser.tabs.sendMessage(tabs[0].id, { command: 'reset' });
 
   window.close();
+}
+
+function color(tabs) {
+  const separator = document.getElementById('separator').value;
+  const skipLines = document.getElementById('skip-lines').value;
+
+  browser.tabs.insertCSS({ file: '/popup/css/insert-color.css' });
+
+  // send order to color the csv
+  browser.tabs.sendMessage(tabs[0].id, {
+    separator,
+    skipLines,
+    command: 'color',
+  });
 }
 
 function reportError(error) {
@@ -53,6 +67,12 @@ function listenForClicks() {
         browser.tabs
           .query({ active: true, currentWindow: true })
           .then(reset)
+          .catch(reportError);
+      } else if (e.target.classList.contains('color')) {
+        console.log('🌈 color! 🦄');
+        browser.tabs
+          .query({ active: true, currentWindow: true })
+          .then(color)
           .catch(reportError);
       }
     });
