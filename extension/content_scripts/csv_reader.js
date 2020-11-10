@@ -19,9 +19,10 @@ function mainWork() {
   // remove previous tables
   function removeResult() {
     const table = document.querySelector('.csv-table');
-    if (table) {
-      table.remove();
-    }
+    const color = document.querySelector('.csv-color');
+
+    if (table) table.remove();
+    if (color) color.remove();
   }
 
   // parses the content, replaces it with an html table
@@ -145,6 +146,108 @@ function mainWork() {
       🎁 It would mean a lot!</p>`;
   }
 
+  function applyColors(inputSeparator, skipLines) {
+    removeResult();
+    console.log('color!');
+
+    const colorContainer = document.createElement('div');
+    colorContainer.className = 'csv-color';
+    // get all text
+    const html = document.body.innerHTML;
+    const htmlNoTags = html.replace(/<\/?[a-z]+>/gi, '');
+    // separate in lines
+    const allRows = htmlNoTags.split('\n');
+    // string where the whole html will be stored
+    let result = '';
+
+    // some data about the table will be here after parsing
+    result += '<div id="table-data"></div>';
+
+    if (skipLines > 0) {
+      const skippedText = allRows.splice(0, skipLines);
+      // skipped text into its own div on top
+      result += `<div class="skipped-text">${skippedText.join('<br />')}</div>`;
+    }
+
+    // TODO try to guess the separator instead of hard-coding a ','
+    const separator = inputSeparator === '' ? ',' : inputSeparator;
+    // escape the 'pipe' as it works as a boolean in a regex 😱
+    const separatorRegex = new RegExp(separator === '|' ? '\\|' : separator);
+
+    // separate with separator (like above)
+    const arrayOfAllRows = allRows.map((line, i) => {
+      // decode html entities safely
+      line = htmlDecode(line);
+
+      // empty row
+      const row = [];
+      // flag to keep track of spans
+      // let spanInd = 0;
+      // string parsed and to be stored
+      // let prev = `<span class="col-${spanInd}">`;
+      let prev = '';
+      // flag to keep track if inside of quotes
+      let insideQuotes = false;
+
+      // for each line, analyze each character (could be done faster?)
+      [...line].forEach((c, j) => {
+        // if first of line, add span
+        // if (j === 0) prev += '<span class="0">';
+        // if it's not the separator outside a string, nor a quote, store char
+        if ((!separatorRegex.test(c) || insideQuotes) && !/"/.test(c))
+          prev += c;
+        // quote found, change the flag
+        if (/"/.test(c)) insideQuotes = !insideQuotes;
+        // separator found OUTSIDE quotes, close span, push stored to array and clear it
+        if (separatorRegex.test(c) && !insideQuotes) {
+          // prev += '</span>';
+          row.push(prev);
+          // spanInd += 1;
+          // prev = `<span class="col-${spanInd}">`;
+          prev = '';
+        }
+        // end of line, close span and push last value to array
+        if (j === line.length - 1) {
+          // prev += '</span>';
+          row.push(prev);
+        }
+      });
+
+      // return array
+      // console.log(row);
+      return row;
+    });
+    console.log(arrayOfAllRows);
+    // add <span> tags to each block
+    arrayOfAllRows.forEach(array => {
+      let row = '';
+      array.forEach(
+        (item, k) =>
+          (row += `<span class="col-${k}">${item}</span>${
+            k < array.length - 1 ? `<span class="sep">${separator}</span>` : ''
+          }`)
+      );
+      row += '<br/>';
+      // add each row
+      result += row;
+    });
+
+    colorContainer.innerHTML = result;
+
+    document.body.appendChild(colorContainer);
+
+    // add table info
+    document.getElementById('table-data').innerHTML = `<p>
+      Total rows: <span class="result">${new Intl.NumberFormat('en-US', {
+        style: 'decimal',
+      }).format(arrayOfAllRows.length)}</span>
+      <br />
+      Total columns: <span class="result">${arrayOfAllRows[1].length}</span>
+      <br />
+      Separator: <span class="result">${separator}</span>
+      </p>`;
+  }
+
   // console.log('CSV Reader Script Started');
 
   browser.runtime.onMessage.addListener(message => {
@@ -155,6 +258,8 @@ function mainWork() {
       convertCSV(separator, titleLine, skipLines, hasLinks);
     } else if (command === 'reset') {
       removeResult();
+    } else if (command === 'color') {
+      applyColors(separator, skipLines);
     }
   });
 }
