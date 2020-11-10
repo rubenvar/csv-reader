@@ -34,7 +34,7 @@ It transforms the raw `csv` data into a table, nicely formatted so it's easy to 
 
 ## How to use
 
-1. Head to the extension page(in [Chrome](https://chrome.google.com/webstore/detail/csv-reader/dnioinfbhmclclfdbcnlfgbojdpdicde) or [Firefox](https://addons.mozilla.org/es/firefox/addon/csv-reader/)) and install it.
+1. Head to the extension page (in [Chrome](https://chrome.google.com/webstore/detail/csv-reader/dnioinfbhmclclfdbcnlfgbojdpdicde) or [Firefox](https://addons.mozilla.org/es/firefox/addon/csv-reader/)) and install it.
 2. Head to any `.csv` data page.
 3. Click on the extension icon, fill the form:
    1. Choose the _separator_.
