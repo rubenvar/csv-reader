@@ -27,9 +27,9 @@ It transforms the raw `csv` data into a table, nicely formatted so it's easy to 
 
 Allows user to input some settings:
 
-| Feature         | Default | Type    | It does                                            |
+| Feature         | Default | Type    | Result                                             |
 | --------------- | ------- | ------- | -------------------------------------------------- |
-| Separator       | `,`     | String  | Break the csv data when this value is found        |
+| Separator       | `,`     | String  | New column when this value is found                |
 | Title row       | `false` | Boolean | Use the first line as the table header             |
 | Skip at the top | `0`     | Number  | Number of text lines to leave untouched at the top |
 | Links in text   | `false` | Boolean | Look for links in data and make them clickable     |
@@ -39,17 +39,17 @@ Allows user to input some settings:
 1. Install the extension (in [Chrome](https://chrome.google.com/webstore/detail/csv-reader/dnioinfbhmclclfdbcnlfgbojdpdicde) or [Firefox](https://addons.mozilla.org/es/firefox/addon/csv-reader/)).
 2. Head to any `.csv` data page.
 3. Click on the extension icon, fill the form:
-   1. Choose the _separator_.
-   2. Check if there is a title row for the data. This will format a header row in the table.
-   3. Input the number of lines to skip on top. Some csv pages have a few lines with info, we don't want to format those.
-   4. Check if there are links in the data. They will be formatted as clickable links.
+   1. Choose the **separator**.
+   2. Check if there is a **title row** for the data. This will format a header row in the table.
+   3. Input the number of **lines to skip** at the top. Some csv pages have a few lines with info, we don't want to format those.
+   4. Check if there are **links** in the data. They will be formatted as clickable links.
 4. Done, enjoy the table!
 
 ### Example
 
-Visit a `.csv` data file online. You cant try [this csv sample dataset](https://rubenvara.s3-eu-west-1.amazonaws.com/csv/dataNov-2-2020.csv) or [this other example](http://www.fpmaj.gr.jp/iyaku/HB_20170227-20170305.csv).
+Visit a `.csv` data file online. You can try [this csv sample dataset](https://rubenvara.s3-eu-west-1.amazonaws.com/csv/dataNov-2-2020.csv) or [this other example](http://www.fpmaj.gr.jp/iyaku/HB_20170227-20170305.csv).
 
-Click on the CSV Reader extension icon.
+Click on the **CSV Reader** extension icon.
 
 In the popup, input the config options: separator, title row, etc. (In the example dataset, `|` (pipe) as the separator, and check the title line option)
 
@@ -71,18 +71,19 @@ Some features I'd like to work on (help appreciated):
 - [x] Improve the browser icons (dark/light, design).
 - [x] Style the table row on hover.
 - [ ] Show progress: while the content is being processed, hide it and show a loading component.
+- [ ] Add option to just rainbow-code csv (like the [vscode plugin](https://github.com/mechatroner/vscode_rainbow_csv)) instead of making a table.
 - [x] If separator is also in text, between `""`, detect and don't use as separator.
 - [x] Add `<a>` tags to links if they are links (regex) and the config option is checked in the popup.
 - [ ] Detect if text _looks like a link_.
 - [x] Update README and Firefox page with images and examples of usage.
-- [ ] Try to auto-detect separator.
 - [x] Add some useful data in the result page (number of rows and columns, etc.).
 - [x] Ask users in the result page to leave a 5⭐ review please.
-- [ ] Make table header sticky, so it stays at the top while scrolling.
-- [ ] Add an initial check to see if content is _too big_. If it is, change the parse method to a lighter but less precise one.
+- [ ] Make table header **sticky**, so it stays at the top while scrolling.
 - [x] Remove `""` from the strings if they are at begining and end of string.
 - [x] 'Doesn't work here' message: add 'if you feel this is an error please report it'.
 - [ ] Try to stop .csv files from downloading, and instead open them in browser so thay can be converted.
 - [ ] Make columns hideable.
 - [ ] Maybe add the `reset` button at the top of the table instead of having to open the popup again.
+- [ ] Add an initial check to see if content is _too big_. If it is, change the parse method to a lighter but less precise one.
+- [ ] Try to auto-detect separator.
 - [ ] If there is a title line, add option to transform data into JSON and export.
