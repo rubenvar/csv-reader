@@ -69,13 +69,14 @@ Some features I'd like to work on (help appreciated):
 - [x] Style the table row on hover.
 - [ ] Show progress: while the content is being processed, hide it and show a loading component.
 - [x] If separator is also in text, between `""`, detect and don't use as separator.
-- [ ] Add an initial check to see if content is _too big_. If it is, change the parse method to a lighter one.
 - [x] Add `<a>` tags to links if they are links (regex) and the config option is checked in the popup.
 - [ ] Detect if text _looks like a link_.
 - [x] Update README and Firefox page with images and examples of usage.
 - [ ] Try to auto-detect separator.
 - [x] Add some useful data in the result page (number of rows and columns, etc.).
 - [x] Ask users in the result page to leave a 5⭐ review please.
+- [ ] Make table header sticky, so it stays at the top while scrolling.
+- [ ] Add an initial check to see if content is _too big_. If it is, change the parse method to a lighter but less precise one.
 - [x] Remove `""` from the strings if they are at begining and end of string.
 - [x] 'Doesn't work here' message: add 'if you feel this is an error please report it'.
 - [ ] Try to stop .csv files from downloading, and instead open them in browser so thay can be converted.
