@@ -1,0 +1,80 @@
+body {
+  font-family: monospace;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body > :not(.csv-color) {
+  display: none;
+}
+
+.col-0 {
+  color: hsl(calc(45 * 0), 85%, 45%);
+}
+.col-1 {
+  color: hsl(calc(45 * 1), 85%, 45%);
+}
+.col-2 {
+  color: hsl(calc(45 * 2), 85%, 45%);
+}
+.col-3 {
+  color: hsl(calc(45 * 3), 85%, 45%);
+}
+.col-4 {
+  color: hsl(calc(45 * 4), 85%, 45%);
+}
+.col-5 {
+  color: hsl(calc(45 * 5), 85%, 45%);
+}
+.col-6 {
+  color: hsl(calc(45 * 6), 85%, 45%);
+}
+.col-7 {
+  color: hsl(calc(45 * 7), 85%, 45%);
+}
+.col-8 {
+  color: hsl(calc(45 * 0), 85%, 45%);
+}
+.col-9 {
+  color: hsl(calc(45 * 1), 85%, 45%);
+}
+.col-10 {
+  color: hsl(calc(45 * 2), 85%, 45%);
+}
+.col-11 {
+  color: hsl(calc(45 * 3), 85%, 45%);
+}
+.col-12 {
+  color: hsl(calc(45 * 4), 85%, 45%);
+}
+.col-13 {
+  color: hsl(calc(45 * 5), 85%, 45%);
+}
+.col-14 {
+  color: hsl(calc(45 * 6), 85%, 45%);
+}
+.col-15 {
+  color: hsl(calc(45 * 7), 85%, 45%);
+}
+.col-16 {
+  color: hsl(calc(45 * 0), 85%, 45%);
+}
+.col-17 {
+  color: hsl(calc(45 * 1), 85%, 45%);
+}
+.col-18 {
+  color: hsl(calc(45 * 2), 85%, 45%);
+}
+.col-19 {
+  color: hsl(calc(45 * 3), 85%, 45%);
+}
+.col-20 {
+  color: hsl(calc(45 * 4), 85%, 45%);
+}
+.sep {
+  color: black;
+  margin: 0 1px;
+}
