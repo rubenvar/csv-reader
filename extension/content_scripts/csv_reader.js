@@ -26,7 +26,7 @@ function mainWork() {
 
   // parses the content, replaces it with an html table
   function convertCSV(inputSeparator, titleLine, skipLines, hasLinks) {
-    const urlRegex = /^(http(s)?:\/\/.)?(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
+    const urlRegex = /^(http(s)?:\/\/.)?(www\.)?[a-zA-Z0-9]+([\-\.]{1}[a-zA-Z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
     removeResult();
 
     const tableContainer = document.createElement('div');
