@@ -2,6 +2,12 @@
 
 All notable changes to the CSV Reader project will be documented in this file.
 
+## [0.4.1] - Unreleased
+
+### Fixed
+
+- Improved the URL detection regex: now it accepts urls with lower and upper case.
+
 ## [0.4.0] - 2020-11-09
 
 🎊 Now available in Chrome too!
