@@ -23,14 +23,16 @@ _CSV Reader_ allows you to look at the data formatted as a table, so you can mak
 
 CSV Reader detects if the current tab is a `.csv` page (correctly most of the time).
 
+It transforms the raw `csv` data into a table, nicely formatted so it's easy to scan (see images below).
+
 Allows user to input some settings:
 
-- Separator (defaults to `,`).
-- Title line option (defaults to `false`). If checked, first line of csv will be the table header.
-- Number of lines to skip on top (defaults to `0`). Useful if data has additional info on top.
-- Check for links option (defaults to `false`). If checked, links in data will be clickable.
-
-It transforms the raw `csv` data into a table, nicely formatted so it's easy to scan (see images below).
+| Feature         | Default | Type    | It does                                            |
+| --------------- | ------- | ------- | -------------------------------------------------- |
+| Separator       | `,`     | String  | Break the csv data when this value is found        |
+| Title row       | `false` | Boolean | Use the first line as the table header             |
+| Skip at the top | `0`     | Number  | Number of text lines to leave untouched at the top |
+| Links in text   | `false` | Boolean | Look for links in data and make them clickable     |
 
 ## How to use
 
@@ -39,7 +41,8 @@ It transforms the raw `csv` data into a table, nicely formatted so it's easy to 
 3. Click on the extension icon, fill the form:
    1. Choose the _separator_.
    2. Check if there is a title row for the data. This will format a header row in the table.
-   3. Input the number of lines to skip on top. csv pages have a few lines with info at the top, we don't want to format those.
+   3. Input the number of lines to skip on top. Some csv pages have a few lines with info, we don't want to format those.
+   4. Check if there are links in the data. They will be formatted as clickable links.
 4. Done, enjoy the table!
 
 ### Example
