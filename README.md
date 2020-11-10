@@ -25,7 +25,7 @@ CSV Reader detects if the current tab is a `.csv` page (correctly most of the ti
 
 It transforms the raw `csv` data into a table, nicely formatted so it's easy to scan (see images below).
 
-Allows user to input some settings:
+It allows the user to input some settings:
 
 | Feature         | Default | Type    | Result                                             |
 | --------------- | ------- | ------- | -------------------------------------------------- |
@@ -63,6 +63,17 @@ To go back to the raw data, click the "Reset" button on the extension popup:
 
 ![Reset](/docs/reset.png)
 
+## Help this project!
+
+If this extension was useful to you in any way, please consider leaving a ⭐ 5-star review.
+
+👨‍💻 It will take you less than a minute, and will greatly help reach new audiences.
+
+- [Leave a review in Chrome](https://chrome.google.com/webstore/detail/csv-reader/dnioinfbhmclclfdbcnlfgbojdpdicde).
+- [Leave a review in Firefox](https://addons.mozilla.org/es/firefox/addon/csv-reader/).
+
+🙏 Thank you very much!
+
 ## Some kind of roadmap...
 
 Some features I'd like to work on (help appreciated):
@@ -70,20 +81,20 @@ Some features I'd like to work on (help appreciated):
 - [x] Chrome version.
 - [x] Improve the browser icons (dark/light, design).
 - [x] Style the table row on hover.
-- [ ] Show progress: while the content is being processed, hide it and show a loading component.
-- [ ] Add option to just rainbow-code csv (like the [vscode plugin](https://github.com/mechatroner/vscode_rainbow_csv)) instead of making a table.
+- [ ] Show **progress**: while the content is being processed, hide it and show a loading component.
+- [ ] Add option to just _rainbow-code_ csv (like the [vscode plugin](https://github.com/mechatroner/vscode_rainbow_csv)) instead of making a table.
 - [x] If separator is also in text, between `""`, detect and don't use as separator.
 - [x] Add `<a>` tags to links if they are links (regex) and the config option is checked in the popup.
 - [ ] Detect if text _looks like a link_.
+- [ ] Try to **auto-detect** separator.
 - [x] Update README and Firefox page with images and examples of usage.
 - [x] Add some useful data in the result page (number of rows and columns, etc.).
 - [x] Ask users in the result page to leave a 5⭐ review please.
 - [ ] Make table header **sticky**, so it stays at the top while scrolling.
 - [x] Remove `""` from the strings if they are at begining and end of string.
 - [x] 'Doesn't work here' message: add 'if you feel this is an error please report it'.
-- [ ] Try to stop .csv files from downloading, and instead open them in browser so thay can be converted.
-- [ ] Make columns hideable.
+- [ ] Try to stop .csv files from **downloading**, and instead open them in browser so thay can be converted.
+- [ ] Make columns **hideable**.
 - [ ] Maybe add the `reset` button at the top of the table instead of having to open the popup again.
 - [ ] Add an initial check to see if content is _too big_. If it is, change the parse method to a lighter but less precise one.
-- [ ] Try to auto-detect separator.
 - [ ] If there is a title line, add option to transform data into JSON and export.
