@@ -34,7 +34,7 @@ It transforms the raw `csv` data into a table, nicely formatted so it's easy to 
 
 ## How to use
 
-1. Head to the extension page (in [Chrome](https://chrome.google.com/webstore/detail/csv-reader/dnioinfbhmclclfdbcnlfgbojdpdicde) or [Firefox](https://addons.mozilla.org/es/firefox/addon/csv-reader/)) and install it.
+1. Install the extension (in [Chrome](https://chrome.google.com/webstore/detail/csv-reader/dnioinfbhmclclfdbcnlfgbojdpdicde) or [Firefox](https://addons.mozilla.org/es/firefox/addon/csv-reader/)).
 2. Head to any `.csv` data page.
 3. Click on the extension icon, fill the form:
    1. Choose the _separator_.
@@ -44,11 +44,11 @@ It transforms the raw `csv` data into a table, nicely formatted so it's easy to 
 
 ### Example
 
-Visit [this csv sample dataset](https://rubenvara.s3-eu-west-1.amazonaws.com/csv/dataNov-2-2020.csv).
+Visit a `.csv` data file online. You cant try [this csv sample dataset](https://rubenvara.s3-eu-west-1.amazonaws.com/csv/dataNov-2-2020.csv) or [this other example](http://www.fpmaj.gr.jp/iyaku/HB_20170227-20170305.csv).
 
 Click on the CSV Reader extension icon.
 
-In the popup, input `|` (pipe) as the separator, and check the title line option:
+In the popup, input the config options: separator, title row, etc. (In the example dataset, `|` (pipe) as the separator, and check the title line option)
 
 ![Start](/docs/init.png)
 
