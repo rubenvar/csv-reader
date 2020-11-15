@@ -4,6 +4,10 @@ All notable changes to the CSV Reader project will be documented in this file.
 
 ## [0.5.0] - 2020-11-15
 
+### Added
+
+- Create new images for docs and extension pages in browsers.
+
 ### Changed
 
 - Make table header **sticky**, so it stays at the top while scrolling.
