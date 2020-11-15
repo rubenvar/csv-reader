@@ -1,4 +1,6 @@
-![CSV Reader](/docs/promo.png)
+<p align="center">
+   <img width="630" height="405" src="/docs/promo.png" alt="CSV Reader">
+</p>
 
 🚧 Work in Progress... 🚧
 
