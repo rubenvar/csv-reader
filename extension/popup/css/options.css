@@ -7,10 +7,15 @@
   --cl-text: #2e1f00;
 }
 
+html {
+  /* popup size for Chrome */
+  min-width: 670px;
+}
+
 body {
   background: var(--cl-bg);
   background: linear-gradient(225deg, var(--cl-dt-light), var(--cl-bg) 20%);
-  padding: 20px;
+  padding: 0px 20px 20px;
 }
 
 h2,
@@ -19,7 +24,7 @@ input,
 label,
 select,
 button {
-  font-family: 'Muli', 'Arial', sans-serif;
+  font-family: "Muli", "Arial", sans-serif;
   font-size: 17px;
   color: var(--cl-text);
 }
