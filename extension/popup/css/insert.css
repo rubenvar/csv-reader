@@ -47,8 +47,23 @@ table {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
+thead {
+  position: sticky;
+  top: 0;
+}
+
 thead tr {
-  background-color: #ffcf0acc;
+  background-color: #ffcf0aee;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.13);
+}
+
+thead tr th {
+  /* Chrome bug for sticky in thead, so do it again for th 🤷‍♂️ */
+  position: sticky;
+  top: 0;
+  background-color: #ffcf0aee;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 tbody tr:nth-child(even) {
