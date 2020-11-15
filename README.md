@@ -1,4 +1,4 @@
-# CSV Reader
+![CSV Reader](/docs/promo.png)
 
 🚧 Work in Progress... 🚧
 
@@ -90,7 +90,7 @@ Some features I'd like to work on (help appreciated):
 - [x] Update README and Firefox page with images and examples of usage.
 - [x] Add some useful data in the result page (number of rows and columns, etc.).
 - [x] Ask users in the result page to leave a 5⭐ review please.
-- [ ] Make table header **sticky**, so it stays at the top while scrolling.
+- [x] Make table header **sticky**, so it stays at the top while scrolling.
 - [x] Remove `""` from the strings if they are at begining and end of string.
 - [x] 'Doesn't work here' message: add 'if you feel this is an error please report it'.
 - [ ] Try to stop .csv files from **downloading**, and instead open them in browser so thay can be converted.
