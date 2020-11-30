@@ -10,7 +10,7 @@ A browser extension.
 
 It will transform raw `csv` data into a simple `html` table, and show it online in the same tab.
 
-Available free for [Chrome](https://chrome.google.com/webstore/detail/csv-reader/dnioinfbhmclclfdbcnlfgbojdpdicde) and [Firefox](https://addons.mozilla.org/es/firefox/addon/csv-reader/).
+Available free for [Chrome](https://chrome.google.com/webstore/detail/csv-reader/dnioinfbhmclclfdbcnlfgbojdpdicde) and [Firefox](https://addons.mozilla.org/en-US/firefox/addon/csv-reader/).
 
 ### What problem does this solve?
 
@@ -38,7 +38,7 @@ It allows the user to input some settings:
 
 ## How to use
 
-1. Install the extension (in [Chrome](https://chrome.google.com/webstore/detail/csv-reader/dnioinfbhmclclfdbcnlfgbojdpdicde) or [Firefox](https://addons.mozilla.org/es/firefox/addon/csv-reader/)).
+1. Install the extension (in [Chrome](https://chrome.google.com/webstore/detail/csv-reader/dnioinfbhmclclfdbcnlfgbojdpdicde) or [Firefox](https://addons.mozilla.org/en-US/firefox/addon/csv-reader/)).
 2. Head to any `.csv` data page.
 3. Click on the extension icon, fill the form:
    1. Choose the **separator**.
@@ -72,7 +72,7 @@ If this extension was useful to you in any way, please consider leaving a ⭐ 5-
 👨‍💻 It will take you less than a minute, and will greatly help reach new audiences.
 
 - [Leave a review in Chrome](https://chrome.google.com/webstore/detail/csv-reader/dnioinfbhmclclfdbcnlfgbojdpdicde).
-- [Leave a review in Firefox](https://addons.mozilla.org/es/firefox/addon/csv-reader/).
+- [Leave a review in Firefox](https://addons.mozilla.org/en-US/firefox/addon/csv-reader/).
 
 🙏 Thank you very much!
 
