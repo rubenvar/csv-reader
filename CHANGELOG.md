@@ -2,6 +2,12 @@
 
 All notable changes to the CSV Reader project will be documented in this file, following SemVer.
 
+## [Unreleased]
+
+### Added
+
+- Add option to just _rainbow-code_ csv (highlight columns with different colors, like the [rainbow-csv plugin](https://github.com/mechatroner/vscode_rainbow_csv)) instead of making a table.
+
 ## [0.5.0] - 2020-11-15
 
 ### Added
