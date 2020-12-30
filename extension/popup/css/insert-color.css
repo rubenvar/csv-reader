@@ -5,6 +5,7 @@ body {
 body {
   margin: 0;
   padding: 0;
+  background-color: #15232d;
 }
 
 body > :not(.csv-color) {
