@@ -1,23 +1,27 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: white;
 }
-body > :not(.csv-table) {
+body > :not(#csv-table):not(#csv-color) {
   display: none;
 }
 
-.csv-table {
+#csv-table {
   padding: 7px;
 }
 
 .skipped-text {
   font-family: monospace;
+  margin: 15px 0;
 }
 
 #table-data {
-  font-family: -apple-system, "Segoe UI", Oxygen, Ubuntu, "Open Sans", "Helvetica Neue", sans-serif;
-  padding: 15px;
+  font-family: -apple-system, "Segoe UI", Oxygen, Ubuntu, "Open Sans",
+    "Helvetica Neue", sans-serif;
+  padding: 7px;
   background-color: #eee;
+  border: none;
 }
 
 #table-data h3 {
@@ -41,7 +45,8 @@ body > :not(.csv-table) {
 table {
   border: 5px solid #ffcf0acc;
   border-top: 0;
-  font-family: -apple-system, "Segoe UI", Oxygen, Ubuntu, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, "Segoe UI", Oxygen, Ubuntu, "Open Sans",
+    "Helvetica Neue", sans-serif;
   font-size: 15px;
   border-spacing: 1px 0;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);

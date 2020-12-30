@@ -1,81 +1,111 @@
+:root {
+  --bg: #121c24;
+  --unimportant: #70899b;
+}
+
 body {
   font-family: monospace;
-}
-
-body {
   margin: 0;
   padding: 0;
-  background-color: #15232d;
+  background-color: var(--bg);
 }
 
-body > :not(.csv-color) {
+body > :not(#csv-table):not(#csv-color) {
   display: none;
 }
 
+#csv-color {
+  padding: 7px;
+}
+
+#table-data,
+.skipped-text {
+  background-color: var(--bg);
+  color: var(--unimportant);
+  margin-bottom: 15px;
+  font-family: monospace;
+}
+
+#table-data {
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--unimportant);
+}
+
+#table-data h3 {
+  color: var(--unimportant);
+  margin: 0 0 10px 0;
+}
+
+#table-data p {
+  margin: 0;
+  color: var(--unimportant);
+  line-height: 1.5;
+}
+
 .col-0 {
-  color: hsl(calc(45 * 0), 85%, 45%);
+  color: hsl(calc(40 * 0), 85%, 60%);
 }
 .col-1 {
-  color: hsl(calc(45 * 1), 85%, 45%);
+  color: hsl(calc(40 * 2), 85%, 60%);
 }
 .col-2 {
-  color: hsl(calc(45 * 2), 85%, 45%);
+  color: hsl(calc(40 * 4), 85%, 60%);
 }
 .col-3 {
-  color: hsl(calc(45 * 3), 85%, 45%);
+  color: hsl(calc(40 * 6), 85%, 60%);
 }
 .col-4 {
-  color: hsl(calc(45 * 4), 85%, 45%);
+  color: hsl(calc(40 * 8), 85%, 60%);
 }
 .col-5 {
-  color: hsl(calc(45 * 5), 85%, 45%);
+  color: hsl(calc(40 * 1), 85%, 60%);
 }
 .col-6 {
-  color: hsl(calc(45 * 6), 85%, 45%);
+  color: hsl(calc(40 * 3), 85%, 60%);
 }
 .col-7 {
-  color: hsl(calc(45 * 7), 85%, 45%);
+  color: hsl(calc(40 * 5), 85%, 60%);
 }
 .col-8 {
-  color: hsl(calc(45 * 0), 85%, 45%);
+  color: hsl(calc(40 * 7), 85%, 60%);
 }
 .col-9 {
-  color: hsl(calc(45 * 1), 85%, 45%);
+  color: hsl(calc(40 * 0), 85%, 60%);
 }
 .col-10 {
-  color: hsl(calc(45 * 2), 85%, 45%);
+  color: hsl(calc(40 * 2), 85%, 60%);
 }
 .col-11 {
-  color: hsl(calc(45 * 3), 85%, 45%);
+  color: hsl(calc(40 * 4), 85%, 60%);
 }
 .col-12 {
-  color: hsl(calc(45 * 4), 85%, 45%);
+  color: hsl(calc(40 * 6), 85%, 60%);
 }
 .col-13 {
-  color: hsl(calc(45 * 5), 85%, 45%);
+  color: hsl(calc(40 * 8), 85%, 60%);
 }
 .col-14 {
-  color: hsl(calc(45 * 6), 85%, 45%);
+  color: hsl(calc(40 * 1), 85%, 60%);
 }
 .col-15 {
-  color: hsl(calc(45 * 7), 85%, 45%);
+  color: hsl(calc(40 * 3), 85%, 60%);
 }
 .col-16 {
-  color: hsl(calc(45 * 0), 85%, 45%);
+  color: hsl(calc(40 * 5), 85%, 60%);
 }
 .col-17 {
-  color: hsl(calc(45 * 1), 85%, 45%);
+  color: hsl(calc(40 * 7), 85%, 60%);
 }
 .col-18 {
-  color: hsl(calc(45 * 2), 85%, 45%);
+  color: hsl(calc(40 * 0), 85%, 60%);
 }
 .col-19 {
-  color: hsl(calc(45 * 3), 85%, 45%);
+  color: hsl(calc(40 * 2), 85%, 60%);
 }
 .col-20 {
-  color: hsl(calc(45 * 4), 85%, 45%);
+  color: hsl(calc(40 * 4), 85%, 60%);
 }
 .sep {
-  color: black;
-  margin: 0 1px;
+  color: var(--unimportant);
+  margin: 0 3px 0 1px;
 }

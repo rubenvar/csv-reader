@@ -9,7 +9,7 @@
 
 html {
   /* popup size for Chrome */
-  min-width: 670px;
+  min-width: 720px;
 }
 
 body {
@@ -82,6 +82,13 @@ input {
   padding: 4px 7px;
   border-radius: 5px;
   width: 65px;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  grid-gap: 15px;
+  gap: 15px;
 }
 
 button {
