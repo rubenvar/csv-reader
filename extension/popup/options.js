@@ -5,25 +5,6 @@ window.browser = (function() {
   return window.msBrowser || window.browser || window.chrome;
 })();
 
-function processCSV(tabs) {
-  const separator = document.getElementById('separator').value;
-  const titleLine = document.getElementById('title-line').checked;
-  const skipLines = document.getElementById('skip-lines').value;
-  const hasLinks = document.getElementById('has-links').checked;
-
-  browser.tabs.insertCSS({ file: '/popup/css/insert.css' });
-
-  browser.tabs.sendMessage(tabs[0].id, {
-    separator,
-    titleLine,
-    skipLines,
-    hasLinks,
-    command: 'convert',
-  });
-  // close the popup
-  window.close();
-}
-
 function reset(tabs) {
   // ? .removeCSS doesn't work in Chrome: it's still in beta. It works well in Firefox
   // browser.tabs.removeCSS({ file: '/popup/css/insert.css' });
@@ -35,7 +16,38 @@ function reset(tabs) {
   window.close();
 }
 
-function color(tabs) {
+function processCSV(tabs) {
+  // reset previous changes (maybe it was color-coded...)
+  // reset();
+
+  const separator = document.getElementById('separator').value;
+  const titleLine = document.getElementById('title-line').checked;
+  const skipLines = document.getElementById('skip-lines').value;
+  const hasLinks = document.getElementById('has-links').checked;
+  console.log({
+    separator,
+    titleLine,
+    skipLines,
+    hasLinks
+  });
+
+  browser.tabs.insertCSS({ file: '/popup/css/insert.css' });
+
+  browser.tabs.sendMessage(tabs[0].id, {
+    separator,
+    titleLine,
+    skipLines,
+    hasLinks,
+    command: 'table',
+  });
+  // close the popup
+  window.close();
+}
+
+function colorCSV(tabs) {
+  // reset previous changes (maybe it was already parsed into a table...)
+  // reset();
+
   const separator = document.getElementById('separator').value;
   const skipLines = document.getElementById('skip-lines').value;
 
@@ -47,6 +59,9 @@ function color(tabs) {
     skipLines,
     command: 'color',
   });
+  
+  // close the popup
+  window.close();
 }
 
 function reportError(error) {
@@ -72,7 +87,7 @@ function listenForClicks() {
         console.log('🌈 color! 🦄');
         browser.tabs
           .query({ active: true, currentWindow: true })
-          .then(color)
+          .then(colorCSV)
           .catch(reportError);
       }
     });
@@ -93,7 +108,7 @@ function checkExtension(tabs) {
   const ext = (url = url.substr(1 + url.lastIndexOf('/')).split('?')[0])
     .split('#')[0]
     .substr(url.lastIndexOf('.'));
-  // if not csv, error and out
+    // if not csv, error and out
   if (ext !== '.csv' && ext !== '.CSV') {
     reportExecuteScriptError({ message: 'Not a .csv page' });
   }
