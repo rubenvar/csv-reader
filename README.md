@@ -65,7 +65,7 @@ To go back to the raw data, click the "Reset" button on the extension popup:
 
 ![Reset](/docs/reset.png)
 
-## Help this project!
+## Help this project
 
 If this extension was useful to you in any way, please consider leaving a ⭐ 5-star review.
 
@@ -76,7 +76,7 @@ If this extension was useful to you in any way, please consider leaving a ⭐ 5-
 
 🙏 Thank you very much!
 
-## Some kind of roadmap...
+## Some kind of roadmap
 
 Some features I'd like to work on (help appreciated):
 
@@ -88,18 +88,7 @@ Some features I'd like to work on (help appreciated):
 - [ ] Redesign popup with new functions.
 - [ ] Make columns **hideable**.
 - [ ] Make table sortable by column.
-- [x] Chrome version.
-- [x] Improve the browser icons (dark/light, design).
-- [x] Style the table row on hover.
-- [x] If separator is also in text, between `""`, detect and don't use as separator.
-- [x] Add `<a>` tags to links if they are links (regex) and the config option is checked in the popup.
 - [ ] Detect if text _looks like a link_.
 - [ ] Try to **auto-detect** separator.
 - [ ] Maybe add the `reset` button at the top of the table instead of having to open the popup again.
-- [x] Update README and Firefox page with images and examples of usage.
-- [x] Add some useful data in the result page (number of rows and columns, etc.).
-- [x] Ask users in the result page to leave a 5⭐ review please.
-- [x] Make table header **sticky**, so it stays at the top while scrolling.
-- [x] Remove `""` from the strings if they are at begining and end of string.
-- [x] 'Doesn't work here' message: add 'if you feel this is an error please report it'.
 - [ ] Add an initial check to see if content is _too big_. If it is, change the parse method to a lighter (but maybe less precise) one.

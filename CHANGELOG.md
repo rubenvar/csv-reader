@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to the CSV Reader project will be documented in this file.
+All notable changes to the CSV Reader project will be documented in this file, following SemVer.
 
 ## [0.5.0] - 2020-11-15
 
@@ -33,10 +33,11 @@ All notable changes to the CSV Reader project will be documented in this file.
 ### Changed
 
 - Improved the styling of the table: changed the font-family, it has a header background color, border color, box-shadow, etc.
+- A row in the table changes background color on hover.
 
 ### Fixed (finally) 🎊
 
-- The extension now recognizes the separator character inside a string and does not treat it as a separator (it does not split the string in that position).
+- The extension now recognizes the separator character inside a string (surrounded by `"`) and does not treat it as a separator (it does not split the string in that position).
 
 ## [0.3.0] - 2020-11-02
 
