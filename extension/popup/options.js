@@ -1,5 +1,7 @@
 const popup = document.getElementById('csv-reader-popup');
 const buttons = popup.querySelectorAll('.button');
+const titleRow = popup.querySelector('#title-line');
+const jsonExport = popup.querySelector('#json-export');
 
 window.browser = (function() {
   return window.msBrowser || window.browser || window.chrome;
@@ -16,23 +18,14 @@ function reset(tabs) {
   window.close();
 }
 
+// send order to create a table
 function processCSV(tabs) {
-  // reset previous changes (maybe it was color-coded...)
-  // reset();
-
   const separator = document.getElementById('separator').value;
   const titleLine = document.getElementById('title-line').checked;
   const skipLines = document.getElementById('skip-lines').value;
   const hasLinks = document.getElementById('has-links').checked;
-  console.log({
-    separator,
-    titleLine,
-    skipLines,
-    hasLinks
-  });
 
   browser.tabs.insertCSS({ file: '/popup/css/insert.css' });
-
   browser.tabs.sendMessage(tabs[0].id, {
     separator,
     titleLine,
@@ -40,27 +33,39 @@ function processCSV(tabs) {
     hasLinks,
     command: 'table',
   });
+
   // close the popup
   window.close();
 }
 
+// send order to format for coloring
 function colorCSV(tabs) {
-  // reset previous changes (maybe it was already parsed into a table...)
-  // reset();
-
   const separator = document.getElementById('separator').value;
   const skipLines = document.getElementById('skip-lines').value;
 
   browser.tabs.insertCSS({ file: '/popup/css/insert-color.css' });
-
-  // send order to color the csv
   browser.tabs.sendMessage(tabs[0].id, {
     separator,
     skipLines,
     command: 'color',
   });
   
-  // close the popup
+  window.close();
+}
+
+// send order to create json
+function exportJSON(tabs) {
+  const separator = document.getElementById('separator').value;
+  const titleLine = document.getElementById('title-line').checked;
+  const skipLines = document.getElementById('skip-lines').value;
+  
+  browser.tabs.sendMessage(tabs[0].id, {
+    separator,
+    titleLine,
+    skipLines,
+    command: 'json',
+  });
+
   window.close();
 }
 
@@ -69,6 +74,10 @@ function reportError(error) {
 }
 
 function listenForClicks() {
+  titleRow.addEventListener('change', function() {
+    if (this.checked) jsonExport.hidden = false
+    else jsonExport.hidden = true;
+  })
   buttons.forEach(button => {
     // click in popup buttons only
     button.addEventListener('click', e => {
@@ -84,10 +93,15 @@ function listenForClicks() {
           .then(reset)
           .catch(reportError);
       } else if (e.target.classList.contains('color')) {
-        console.log('🌈 color! 🦄');
         browser.tabs
           .query({ active: true, currentWindow: true })
           .then(colorCSV)
+          .catch(reportError);
+      } else if (e.target.id === 'json-export') {
+        console.log('🎼 json!');
+        browser.tabs
+          .query({ active: true, currentWindow: true })
+          .then(exportJSON)
           .catch(reportError);
       }
     });

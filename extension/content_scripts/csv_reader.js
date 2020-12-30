@@ -16,6 +16,41 @@ function removePrevious() {
   if (color) color.remove();
 }
 
+function parseAllRows(allRows, separator) {
+  // escape the 'pipe' as it works as a boolean in a regex 😱
+  const separatorRegex = new RegExp(separator === '|' ? '\\|' : separator);
+  
+  return allRows.map((line, i) => {
+    // decode html entities safely
+    line = htmlDecode(line);
+
+    // empty row
+    const row = [];
+    // string parsed and to be stored
+    let prev = '';
+    // flag to keep track if inside of quotes
+    let insideQuotes = false;
+
+    // for each line, analyze each character (could be done faster?)
+    [...line].forEach((c, j) => {
+      // if it's not the separator outside a string, nor a quote store char
+      if ((!separatorRegex.test(c) || insideQuotes) && !/"/.test(c))
+        prev += c;
+      // quote found, change the flag
+      if (/"/.test(c)) insideQuotes = !insideQuotes;
+      // separator found OUTSIDE quotes, push stored to array and clear it
+      if (separatorRegex.test(c) && !insideQuotes) {
+        row.push(prev);
+        prev = '';
+      }
+      // end of line, push last value to array
+      if (j === line.length - 1) row.push(prev);
+    });
+
+    // return array
+    return row;
+  });
+}
 
 // where eeeeverything happens
 function mainWork() {
@@ -29,14 +64,13 @@ function mainWork() {
   // main parsin fn, keep code DRY with only this function and a _mode_
   function parseCSV(mode, inputSeparator, titleLine, skipLines, hasLinks) {
     removePrevious();
-    
+
     const urlRegex = /^(http(s)?:\/\/.)?(www\.)?[a-zA-Z0-9]+([\-\.]{1}[a-zA-Z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
+    const separator = inputSeparator === '' ? ',' : inputSeparator;
     const isTable = mode === 'table';
     const isColor = mode === 'color';
     // escape the 'pipe' as it works as a boolean in a regex 😱
-    const separator = inputSeparator === '' ? ',' : inputSeparator;
-    const separatorRegex = new RegExp(separator === '|' ? '\\|' : separator);
-    
+
     const resultContainer = document.createElement('div');
     resultContainer.id = `csv-${isTable ? 'table' : 'color'}`;
     // get all text
@@ -61,36 +95,7 @@ function mainWork() {
     if (isTable) result += '<table>';
 
     // parse allllll rows
-    const arrayOfAllRows = allRows.map((line, i) => {
-      // decode html entities safely
-      line = htmlDecode(line);
-
-      // empty row
-      const row = [];
-      // string parsed and to be stored
-      let prev = '';
-      // flag to keep track if inside of quotes
-      let insideQuotes = false;
-
-      // for each line, analyze each character (could be done faster?)
-      [...line].forEach((c, j) => {
-        // if it's not the separator outside a string, nor a quote store char
-        if ((!separatorRegex.test(c) || insideQuotes) && !/"/.test(c))
-          prev += c;
-        // quote found, change the flag
-        if (/"/.test(c)) insideQuotes = !insideQuotes;
-        // separator found OUTSIDE quotes, push stored to array and clear it
-        if (separatorRegex.test(c) && !insideQuotes) {
-          row.push(prev);
-          prev = '';
-        }
-        // end of line, push last value to array
-        if (j === line.length - 1) row.push(prev);
-      });
-
-      // return array
-      return row;
-    });
+    const arrayOfAllRows = parseAllRows(allRows, separator);
 
     // add the table head
     if (isTable && titleLine) {
@@ -162,8 +167,41 @@ function mainWork() {
       🎁 It would mean a lot!</p>`;
   }
 
+  function createJson(inputSeparator, titleLine, skipLines) {
+    if (!titleLine) return console.log('errorrr!');
+    removePrevious();
+    
+    // get all text
+    const html = document.body.innerHTML;
+    const htmlNoTags = html.replace(/<\/?[a-z]+>/gi, '');
+    // separate in lines
+    const allRows = htmlNoTags.split('\n');
+    
+    if (skipLines > 0) allRows.splice(0, skipLines);
+    
+    // parse allllll rows
+    const separator = inputSeparator === '' ? ',' : inputSeparator;    
+    const arrayOfAllRows = parseAllRows(allRows, separator);
+
+    // get the title row
+    const titleRow = arrayOfAllRows.splice(0, 1)[0];
+
+    // create an array of objects
+    const result = arrayOfAllRows.map(row => {
+      const obj = {}
+      row.forEach((str, i) => obj[titleRow[i]] = str);
+      return obj;
+    });
+
+    const json = JSON.stringify(result);
+    console.log(json);
+    console.log(result);
+    return document.body.textContent = 'no sé cómo mostrar el JSON que ya he conseguido crear aquí';
+  }
+
   browser.runtime.onMessage.addListener(({ command, separator, titleLine, skipLines, hasLinks }) => {
     if (command === 'reset') return removePrevious();
+    if (command === 'json') return createJson(separator, titleLine, skipLines);
     return parseCSV(command, separator, titleLine, skipLines, hasLinks);
   });
 }
