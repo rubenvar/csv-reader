@@ -193,10 +193,23 @@ function mainWork() {
       return obj;
     });
 
-    const json = JSON.stringify(result);
-    console.log(json);
-    console.log(result);
-    return document.body.textContent = 'no sé cómo mostrar el JSON que ya he conseguido crear aquí';
+    // the Trick for exporting the json:
+    // create an invisible link element
+    const a = document.createElement('a');
+    document.body.appendChild(a);
+    a.style = 'display: none';
+    // create a blob, append it to the link, and click the link
+    function createFile(data, fileName) {
+      const json = JSON.stringify(data);
+      const blob = new Blob([json], {type: "octet/stream"});
+      const url = window.URL.createObjectURL(blob);
+      a.href = url;
+      a.download = fileName;
+      a.click();
+      window.URL.revokeObjectURL(url);
+    }
+    
+    return createFile(result, `exported${Date.now()}.json`);
   }
 
   browser.runtime.onMessage.addListener(({ command, separator, titleLine, skipLines, hasLinks }) => {

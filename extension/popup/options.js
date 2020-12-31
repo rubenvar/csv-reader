@@ -74,10 +74,12 @@ function reportError(error) {
 }
 
 function listenForClicks() {
+  // enable json-export button only when there is a title row
   titleRow.addEventListener('change', function() {
-    if (this.checked) jsonExport.hidden = false
-    else jsonExport.hidden = true;
+    if (this.checked) jsonExport.disabled = false
+    else jsonExport.disabled = true;
   })
+
   buttons.forEach(button => {
     // click in popup buttons only
     button.addEventListener('click', e => {
@@ -106,6 +108,10 @@ function listenForClicks() {
       }
     });
   });
+  // execute a file directly:
+  // browser.tabs.executeScript({
+  //   file: '',
+  // });
 }
 
 // Error executing the script.
