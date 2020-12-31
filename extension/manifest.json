@@ -17,7 +17,7 @@
       "32": "icons/csv-32.png",
       "64": "icons/csv-64.png"
     },
-    "default_popup": "popup/options.html",
+    "default_popup": "popup/popup.html",
     "default_title": "CSV Reader",
     "theme_icons": [
       { "dark": "icons/csv-16.png", "light": "icons/csv-light-16.png", "size": 16 },
