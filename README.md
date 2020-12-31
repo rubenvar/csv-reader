@@ -92,3 +92,4 @@ Some features I'd like to work on (help appreciated):
 - [ ] Try to **auto-detect** separator.
 - [ ] Maybe add the `reset` button at the top of the table instead of having to open the popup again.
 - [ ] Add an initial check to see if content is _too big_. If it is, change the parse method to a lighter (but maybe less precise) one.
+- [ ] Keyboard shortcuts.
