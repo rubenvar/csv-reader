@@ -81,10 +81,10 @@ If this extension was useful to you in any way, please consider leaving a ⭐ 5-
 Some features I'd like to work on (help appreciated):
 
 - [ ] Show **progress**: while the content is being processed, hide it and show a loading component.
-- [ ] Add option to just _rainbow-code_ csv (like the [vscode plugin](https://github.com/mechatroner/vscode_rainbow_csv)) instead of making a table.
+- [x] Add option to just _rainbow-code_ csv (like the [vscode plugin](https://github.com/mechatroner/vscode_rainbow_csv)) instead of making a table.
 - [ ] Try to stop .csv files from **downloading**, and instead open them in browser so thay can be converted.
 - [ ] Add option to download csv file.
-- [ ] Add option to download file as JSON (when there is a title row).
+- [x] Add option to download file as JSON (when there is a title row).
 - [ ] Redesign popup with new functions.
 - [ ] Make columns **hideable**.
 - [ ] Make table sortable by column.
