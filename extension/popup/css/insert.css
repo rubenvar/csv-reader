@@ -9,6 +9,7 @@ body > :not(#csv-table):not(#csv-color) {
 
 #csv-table {
   padding: 7px;
+  background-color: white;
 }
 
 .skipped-text {

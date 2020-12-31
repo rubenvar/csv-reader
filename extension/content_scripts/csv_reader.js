@@ -207,6 +207,7 @@ function mainWork() {
       a.download = fileName;
       a.click();
       window.URL.revokeObjectURL(url);
+      a.remove();
     }
     
     return createFile(result, `exported${Date.now()}.json`);

@@ -16,6 +16,7 @@ body > :not(#csv-table):not(#csv-color) {
 
 #csv-color {
   padding: 7px;
+  background-color: var(--bg);
 }
 
 #table-data,
