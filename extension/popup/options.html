@@ -14,40 +14,42 @@
 
     <p class="intro">🤖 Do you want to convert the .csv raw data in this page to something readable?</p>
 
-    <div class="actions">
+    <!-- <div class="actions"> -->
 
       <form class="options" action="">
-        <h2>🖊️ Just need a couple of details</h2>
-        <div class="form-item">
-          <label for="separator">🚧 What is the separator?</label>
-          <input type="text" name="separator" id="separator" placeholder="," required autofocus>
-        </div>
-        <div class="form-item">
-          <label for="title-line">🎩 Check if there is a first title row</label>
-          <input type="checkbox" name="title-line" id="title-line" value="1line">
-        </div>
-        <div class="form-item">
-          <label for="skip-lines">✂️ Number of lines to skip at the top</label>
-          <input type="number" name="skip-lines" id="skip-lines">
-        </div>
-        <div class="form-item">
-          <label for="has-links">🔗 Check if there are links in the data</label>
-          <input type="checkbox" name="has-links" id="has-links" value="hasLinks">
+        <div id="fields">
+          <div class="form-item">
+            <label for="separator">🚧 What is the separator?</label>
+            <input type="text" name="separator" id="separator" placeholder="," required autofocus>
+          </div>
+          <div class="form-item">
+            <label for="title-line">🎩 Check if there is a first title row</label>
+            <input type="checkbox" name="title-line" id="title-line" value="1line">
+          </div>
+          <div class="form-item">
+            <label for="skip-lines">✂️ Number of lines to skip at the top</label>
+            <input type="number" name="skip-lines" id="skip-lines">
+          </div>
+          <div class="form-item">
+            <label for="has-links">🔗 Check if there are links in the data</label>
+            <input type="checkbox" name="has-links" id="has-links" value="hasLinks">
+          </div>
         </div>
         <div class="buttons">
-          <button class="button convert" id="options-submit">🌟 Convert</button>
-          <button class="button color" value="color">🌈  Color code!</button>
-          <button class="button json" id="json-export" value="json" hidden>🎼 JSON Export</button>
+          <button class="button convert" id="options-submit">Convert</button>
+          <button class="button color" value="color">Color code!</button>
+          <button class="button json" id="json-export" value="json" disabled>JSON Export</button>
+          <span></span>
+          <button class="button reset" value="reset">Reset</button>
         </div>
       </form>
 
-      <div class="reset-container">
+      <!-- <div class="reset-container">
         <h2>👋 Or get everything back to normal</h2>
         <p>Get your csv back and remove the table:</p>
-        <button class="button reset" value="reset">💣 Reset</button>
-      </div>
+      </div> -->
 
-    </div>
+    <!-- </div> -->
 
   </div>
 

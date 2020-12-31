@@ -43,14 +43,14 @@ h2 {
   font-size: 19px;
 }
 
-.actions {
+/* .actions {
   display: grid;
+  grid-template-columns: 5fr 2fr;
   background: #ededed;
-  grid-template-columns: 5fr 3fr;
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-}
+} */
 
 form {
   border-right: 1px solid var(--cl-bg);
@@ -59,6 +59,10 @@ form {
   flex-direction: column;
   justify-content: space-between;
   align-items: stretch;
+}
+
+#fields {
+  width: 75%;
 }
 
 .reset-container {
@@ -86,7 +90,7 @@ input {
 
 .buttons {
   display: grid;
-  grid-template-columns: 1.6fr 1fr;
+  grid-template-columns: 1.6fr 1fr 1fr auto 1fr;
   grid-gap: 15px;
   gap: 15px;
 }
@@ -101,10 +105,17 @@ button {
   min-width: 100%;
   cursor: pointer;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s;
 }
 
 button:hover {
   background: var(--cl-acc-light);
+}
+
+button:disabled {
+  background-color: darkgrey;
+  color: lightgrey;
+  cursor: not-allowed;
 }
 
 button.reset {
