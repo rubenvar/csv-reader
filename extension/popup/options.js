@@ -84,27 +84,23 @@ function listenForClicks() {
     // click in popup buttons only
     button.addEventListener('click', e => {
       e.preventDefault();
-      if (e.target.classList.contains('convert')) {
-        browser.tabs
-          .query({ active: true, currentWindow: true })
-          .then(processCSV)
-          .catch(reportError);
-      } else if (e.target.classList.contains('reset')) {
-        browser.tabs
-          .query({ active: true, currentWindow: true })
-          .then(reset)
-          .catch(reportError);
-      } else if (e.target.classList.contains('color')) {
-        browser.tabs
-          .query({ active: true, currentWindow: true })
-          .then(colorCSV)
-          .catch(reportError);
-      } else if (e.target.id === 'json-export') {
-        console.log('🎼 json!');
-        browser.tabs
-          .query({ active: true, currentWindow: true })
-          .then(exportJSON)
-          .catch(reportError);
+      try {
+        if (e.target.classList.contains('convert')) {
+          browser.tabs
+            .query({ active: true, currentWindow: true }, processCSV);
+        } else if (e.target.classList.contains('reset')) {
+          browser.tabs
+            .query({ active: true, currentWindow: true }, reset);
+        } else if (e.target.classList.contains('color')) {
+          browser.tabs
+            .query({ active: true, currentWindow: true }, colorCSV);
+        } else if (e.target.id === 'json-export') {
+          console.log('🎼 json!');
+          browser.tabs
+            .query({ active: true, currentWindow: true }, exportJSON);
+        }
+      } catch (e) {
+        reportError(e)
       }
     });
   });
@@ -130,22 +126,23 @@ function checkExtension(tabs) {
     .substr(url.lastIndexOf('.'));
     // if not csv, error and out
   if (ext !== '.csv' && ext !== '.CSV') {
-    reportExecuteScriptError({ message: 'Not a .csv page' });
+    reportExecuteScriptError({message: 'Not a .csv page'});
+    document.getElementById('try-anyway').addEventListener('click', function(e){
+      e.preventDefault();
+      document.querySelector('#csv-reader-popup').classList.remove('hidden');
+      document.querySelector('#error-content').classList.add('hidden');
+    });
   }
 }
 
+console.log(browser);
+console.log(browser.tabs);
 // TODO maybe should only do the 'executeScript' if the extension is correct? could concatenate both things??
 // start checking for the filetype
 browser.tabs
-  .query({ active: true, currentWindow: true })
-  .then(checkExtension)
-  .catch(reportExecuteScriptError);
-
+  .query({ active: true, currentWindow: true }, checkExtension);
 // start main script
 browser.tabs
-  .executeScript({ file: '/content_scripts/csv_reader.js' })
-  .then(listenForClicks)
-  .catch(reportExecuteScriptError);
-
+  .executeScript({ file: '/content_scripts/csv_reader.js' }, listenForClicks);
 // go
 // listenForClicks();
