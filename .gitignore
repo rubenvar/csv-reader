@@ -14,4 +14,4 @@ chrome-web-store/
 *.pem
 *.zip
 
-browser-polyfill.min.js
+# browser-polyfill.min.js
