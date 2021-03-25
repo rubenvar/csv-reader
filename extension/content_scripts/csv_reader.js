@@ -71,7 +71,7 @@ function mainWork() {
     const isColor = mode === 'color';
     // escape the 'pipe' as it works as a boolean in a regex 😱
 
-    const resultContainer = document.createElement('div');
+    const resultContainer = document.createElement('main');
     resultContainer.id = `csv-${isTable ? 'table' : 'color'}`;
     // get all text
     const html = document.body.innerHTML;
@@ -82,12 +82,12 @@ function mainWork() {
     let result = '';
 
     // some data about the table will be here after parsing
-    result += '<div id="table-data"></div>';
+    result += '<div id="page-header"></div>';
 
     if (skipLines > 0) {
       const skippedText = allRows.splice(0, skipLines);
       // skipped text into its own div on top
-      result += `<div class="skipped-text">${skippedText.join('<br />')}</div>`;
+      result += `<div id="skipped-text">${skippedText.join('<br />')}</div>`;
     }
 
     // TODO maybe improve this process to be more resilient?
@@ -146,25 +146,25 @@ function mainWork() {
 
     document.body.appendChild(resultContainer);
 
-    // add table info
-    document.getElementById('table-data').innerHTML = `<p>
-      Total rows: <span class="result">${new Intl.NumberFormat('en-US', {
-        style: 'decimal',
-      }).format(arrayOfAllRows.length)}</span>
+    // add table info and add ask for review please 🙏
+    document.getElementById('page-header').innerHTML = `
+      <p>
+        Total rows: <span class="result">${new Intl.NumberFormat('en-US', {
+          style: 'decimal',
+        }).format(arrayOfAllRows.length)}</span>
+      </p>
+      <p>
+        Total columns: <span class="result">${arrayOfAllRows[1].length}</span>
+      </p>
+      <p>
+        Separator: <span class="result">${separator}</span>
+      </p>
       <br />
-      Total columns: <span class="result">${arrayOfAllRows[1].length}</span>
-      <br />
-      Separator: <span class="result">${separator}</span>
+      <p id="review">
+        ⭐ Was this Extension useful? Please consider spending <em>${Math.floor(Math.random() * 31) +
+        30} seconds</em> leaving a 5-star review (in <a href="https://chrome.google.com/webstore/detail/csv-reader/dnioinfbhmclclfdbcnlfgbojdpdicde" target="_blank" rel="nofollow noreferrer noopener">Chrome</a> or <a href="https://addons.mozilla.org/es/firefox/addon/csv-reader/" target="_blank" rel="nofollow noreferrer noopener">Firefox</a>).
       </p>`;
 
-    // add ask for review please 🙏
-    document.getElementById('table-data').innerHTML += `
-      <br />
-      <h3>⭐ Was this Extension useful?</h3>
-      <p>🙏 Please consider spending <em>${Math.floor(Math.random() * 31) +
-        30} seconds</em> leaving a 5-star review (in <a href="https://chrome.google.com/webstore/detail/csv-reader/dnioinfbhmclclfdbcnlfgbojdpdicde" target="_blank" rel="nofollow noreferrer noopener">Chrome</a>, or <a href="https://addons.mozilla.org/es/firefox/addon/csv-reader/" target="_blank" rel="nofollow noreferrer noopener">Firefox</a>).
-      <br />
-      🎁 It would mean a lot!</p>`;
   }
 
   function createJson(inputSeparator, titleLine, skipLines) {
