@@ -1,6 +1,8 @@
 # Changelog
 
-All notable changes to the CSV Reader project will be documented in this file, following SemVer.
+All notable changes to the [CSV Reader project](https://github.com/rubenvar/csv-reader) will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) (more or less).
 
 ## [Unreleased]
 
@@ -8,6 +10,11 @@ All notable changes to the CSV Reader project will be documented in this file, f
 
 - Add option to download csv data as JSON (when there is a title row).
 - Add option to just _rainbow-code_ csv (highlight columns with different colors, like the [rainbow-csv plugin](https://github.com/mechatroner/vscode_rainbow_csv)) instead of making a table.
+
+### Changed
+
+- Updated polyfill from v0.6.0 to to v0.7.0.
+- Keep `extension/polyfills/` folder in git (added a `.gitkeep` file).
 
 ## [0.5.0] - 2020-11-15
 
