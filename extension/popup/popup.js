@@ -1,5 +1,5 @@
 const popup = document.getElementById('csv-reader-popup');
-const buttons = popup.querySelectorAll('.button');
+const buttons = popup.querySelectorAll('button');
 const titleRow = popup.querySelector('#title-line');
 const jsonExport = popup.querySelector('#json-export');
 
@@ -76,7 +76,7 @@ function reportError(error) {
 function listenForClicks() {
   // enable json-export button only when there is a title row
   titleRow.addEventListener('change', function() {
-    if (this.checked) jsonExport.disabled = false
+    if (this.checked) jsonExport.disabled = false;
     else jsonExport.disabled = true;
   })
 
@@ -108,33 +108,39 @@ function listenForClicks() {
       }
     });
   });
-  // execute a file directly:
-  // browser.tabs.executeScript({
-  //   file: '',
-  // });
 }
 
-// Error executing the script.
-function reportExecuteScriptError(error) {
+function showPopupError() {
   document.querySelector('#csv-reader-popup').classList.add('hidden');
   document.querySelector('#error-content').classList.remove('hidden');
+}
+
+// error executing the script
+function reportExecuteScriptError(error) {
+  showPopupError();
   console.error(`Failed to execute script: ${error.message}`);
 }
 
 function checkExtension(tabs) {
   // get current tab
   let { url } = tabs[0];
-  // get extension in the end of url
+  // get extension at the end of url
   const ext = (url = url.substr(1 + url.lastIndexOf('/')).split('?')[0])
     .split('#')[0]
     .substr(url.lastIndexOf('.'));
-    // if not csv, error and out
+  // if not csv: report error, show error component, and listen for try-anyway calls
   if (ext !== '.csv' && ext !== '.CSV') {
-    reportExecuteScriptError({ message: 'Not a .csv page' });
+    reportError('Not a .csv page');
+    showPopupError();
+    document.getElementById('try-anyway').addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector('#csv-reader-popup').classList.remove('hidden');
+      document.querySelector('#error-content').classList.add('hidden');
+    });
   }
 }
 
-// TODO maybe should only do the 'executeScript' if the extension is correct? could concatenate both things??
+// TODO maybe should only do the 'executeScript' if the extension is correct? could concatenate both things?
 // start checking for the filetype
 browser.tabs
   .query({ active: true, currentWindow: true })
@@ -146,6 +152,3 @@ browser.tabs
   .executeScript({ file: '/content_scripts/csv_reader.js' })
   .then(listenForClicks)
   .catch(reportExecuteScriptError);
-
-// go
-// listenForClicks();
