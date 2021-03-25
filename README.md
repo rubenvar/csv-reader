@@ -2,8 +2,6 @@
    <img width="630" height="405" src="/docs/promo.png" alt="CSV Reader">
 </p>
 
-🚧 Work in Progress... 🚧
-
 ## What is this?
 
 A browser extension.
@@ -25,7 +23,15 @@ _CSV Reader_ allows you to look at the data formatted as a table, so you can mak
 
 CSV Reader detects if the current tab is a `.csv` page (correctly most of the time).
 
-It transforms the raw `csv` data into a table, nicely formatted so it's easy to scan (see images below).
+### Output
+
+It offers different options (see images and examples below):
+
+- Transform the raw `csv` data into a table, nicely formatted so it's easy to scan.
+- Keep the raw `csv` data but rainbow-color it to make it easier to read (inspired by the [Rainbow CSV VS Code extension](https://github.com/mechatroner/vscode_rainbow_csv)).
+- Download the data formatted as JSON (when there is a data header – title row).
+
+### Input
 
 It allows the user to input some settings:
 
@@ -53,7 +59,7 @@ Visit a `.csv` data file online. You can try [this csv sample dataset](https://r
 
 Click on the **CSV Reader** extension icon.
 
-In the popup, input the config options: separator, title row, etc. (In the example dataset, `|` (pipe) as the separator, and check the title line option)
+In the popup, input the config options: separator, title row, etc. (In the example dataset, `|` (pipe) as the separator, and check the title line option).
 
 ![Start](/docs/init.png)
 
@@ -69,26 +75,30 @@ To go back to the raw data, click the "Reset" button on the extension popup:
 
 If this extension was useful to you in any way, please consider leaving a ⭐ 5-star review.
 
-👨‍💻 It will take you less than a minute, and will greatly help reach new audiences.
+It will take you less than a minute, and will greatly help reach new audiences.
 
 - [Leave a review in Chrome](https://chrome.google.com/webstore/detail/csv-reader/dnioinfbhmclclfdbcnlfgbojdpdicde).
 - [Leave a review in Firefox](https://addons.mozilla.org/en-US/firefox/addon/csv-reader/).
 
-🙏 Thank you very much!
+Thank you very much!
+
+### Contribute
+
+Of course, suggestions and PRs are welcome. This is (roughly) the dev process:
+
+**TODO**
+
+I'm avoiding to add a build/compiling process (+ adding packages, webpack, etc.) for as long as I can to try and keep it simple.
 
 ## Some kind of roadmap
 
 Some features I'd like to work on (help appreciated):
 
-- [ ] Show **progress**: while the content is being processed, hide it and show a loading component.
-- [x] Add option to just _rainbow-code_ csv (like the [vscode plugin](https://github.com/mechatroner/vscode_rainbow_csv)) instead of making a table.
-- [ ] Try to stop .csv files from **downloading**, and instead open them in browser so thay can be converted.
-- [ ] Add option to download csv file.
-- [x] Add option to download file as JSON (when there is a title row).
-- [ ] Redesign popup with new functions.
+- [ ] Show **progress**: while the content is being processed, hide the raw csv and show a loading component.
+- [ ] Try to stop .csv files from **downloading**, and instead open them in browser so thay can be converted. _How?_
+- [ ] Try to **auto-detect** separator.
 - [ ] Make columns **hideable**.
 - [ ] Make table sortable by column.
-- [ ] Detect if text _looks like a link_.
-- [ ] Try to **auto-detect** separator.
-- [ ] Maybe add the `reset` button at the top of the table instead of having to open the popup again.
-- [ ] Add an initial check to see if content is _too big_. If it is, change the parse method to a lighter (but maybe less precise) one.
+- [ ] Detect if text _looks like a link_ instead of having a popup checkbox.
+- [ ] Add option to download csv file.
+- [ ] Add an initial check to see if content is _too big_. If it is, change the parse method to a lighter (but maybe less precise) one?
