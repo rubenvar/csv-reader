@@ -14,42 +14,33 @@
 
     <p class="intro">🤖 Do you want to convert the .csv raw data in this page to something readable?</p>
 
-    <!-- <div class="actions"> -->
-
-      <form class="options" action="">
-        <div id="fields">
-          <div class="form-item">
-            <label for="separator">🚧 What is the separator?</label>
-            <input type="text" name="separator" id="separator" placeholder="," required autofocus>
-          </div>
-          <div class="form-item">
-            <label for="title-line">🎩 Check if there is a first title row</label>
-            <input type="checkbox" name="title-line" id="title-line" value="1line">
-          </div>
-          <div class="form-item">
-            <label for="skip-lines">✂️ Number of lines to skip at the top</label>
-            <input type="number" name="skip-lines" id="skip-lines">
-          </div>
-          <div class="form-item">
-            <label for="has-links">🔗 Check if there are links in the data</label>
-            <input type="checkbox" name="has-links" id="has-links" value="hasLinks">
-          </div>
+    <form class="options" action="">
+      <div id="fields">
+        <div class="form-item">
+          <label for="separator">🚧 What is the separator?</label>
+          <input type="text" name="separator" id="separator" placeholder="," required autofocus>
         </div>
-        <div class="buttons">
-          <button class="button convert" id="options-submit">Convert</button>
-          <button class="button color" value="color">Color code!</button>
-          <button class="button json" id="json-export" value="json" disabled>JSON Export</button>
-          <span></span>
-          <button class="button reset" value="reset">Reset</button>
+        <div class="form-item">
+          <label for="title-line">🎩 Check if there is a first title row</label>
+          <input type="checkbox" name="title-line" id="title-line" value="1line">
         </div>
-      </form>
-
-      <!-- <div class="reset-container">
-        <h2>👋 Or get everything back to normal</h2>
-        <p>Get your csv back and remove the table:</p>
-      </div> -->
-
-    <!-- </div> -->
+        <div class="form-item">
+          <label for="skip-lines">✂️ Number of lines to skip at the top</label>
+          <input type="number" name="skip-lines" id="skip-lines">
+        </div>
+        <div class="form-item">
+          <label for="has-links">🔗 Check if there are links in the data</label>
+          <input type="checkbox" name="has-links" id="has-links" value="hasLinks">
+        </div>
+      </div>
+      <div class="buttons">
+        <button class="convert" id="options-submit">Convert</button>
+        <button class="color" value="color">Color code!</button>
+        <button class="json" id="json-export" value="json" disabled>JSON Export</button>
+        <span></span>
+        <button class="reset" value="reset">Reset</button>
+      </div>
+    </form>
 
   </div>
 
@@ -57,9 +48,18 @@
     <p>⚠️ This doesn't seem to work here, please try a different page...</p>
     <br>
     <hr>
-    <p>Is this an error? 🙇‍♂️ I apologize. Please <a href="https://github.com/rubenvar/csv-reader/issues"
+    <p>
+      Is this an error? 🙇‍♂️ I apologize. Please <a href="https://github.com/rubenvar/csv-reader/issues"
         target="_blank" rel="nofollow noopener noreferrer">report it</a>
-      and I will look into it</p>
+      and I will look into it
+    </p>
+    <p>
+      Feeling daring?
+      <div class="buttons">
+        <button id="try-anyway">Try anyway!</button>
+      </div>
+      (but no promises)
+    </p>
   </div>
 
   <script type="application/javascript" src="/polyfills/browser-polyfill.min.js"></script>
