@@ -14,33 +14,40 @@ body > :not(#csv-table):not(#csv-color) {
   display: none;
 }
 
+/* Main */
+
 #csv-color {
   padding: 7px;
+  background-color: var(--bg);
 }
 
-#table-data,
-.skipped-text {
+/* Header */
+
+#page-header,
+#skipped-text {
   background-color: var(--bg);
   color: var(--unimportant);
   margin-bottom: 15px;
   font-family: monospace;
 }
 
-#table-data {
+#page-header {
   padding-bottom: 15px;
   border-bottom: 1px solid var(--unimportant);
 }
 
-#table-data h3 {
+#page-header h3 {
   color: var(--unimportant);
   margin: 0 0 10px 0;
 }
 
-#table-data p {
+#page-header p {
   margin: 0;
   color: var(--unimportant);
   line-height: 1.5;
 }
+
+/* The CSV */
 
 .col-0 {
   color: hsl(calc(40 * 0), 85%, 60%);

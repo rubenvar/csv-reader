@@ -78,32 +78,31 @@ function listenForClicks() {
   titleRow.addEventListener('change', function() {
     if (this.checked) jsonExport.disabled = false;
     else jsonExport.disabled = true;
-  })
+  });
 
   buttons.forEach(button => {
     // click in popup buttons only
     button.addEventListener('click', e => {
       e.preventDefault();
-      if (e.target.classList.contains('convert')) {
+      if (e.target.id === 'convert') {
         browser.tabs
           .query({ active: true, currentWindow: true })
           .then(processCSV)
           .catch(reportError);
-      } else if (e.target.classList.contains('reset')) {
-        browser.tabs
-          .query({ active: true, currentWindow: true })
-          .then(reset)
-          .catch(reportError);
-      } else if (e.target.classList.contains('color')) {
+      } else if (e.target.id === 'color-code') {
         browser.tabs
           .query({ active: true, currentWindow: true })
           .then(colorCSV)
           .catch(reportError);
       } else if (e.target.id === 'json-export') {
-        console.log('🎼 json!');
         browser.tabs
           .query({ active: true, currentWindow: true })
           .then(exportJSON)
+          .catch(reportError);
+      } else if (e.target.id === 'reset') {
+        browser.tabs
+          .query({ active: true, currentWindow: true })
+          .then(reset)
           .catch(reportError);
       }
     });

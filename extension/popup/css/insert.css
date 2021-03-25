@@ -3,44 +3,53 @@ body {
   padding: 0;
   background-color: white;
 }
+
 body > :not(#csv-table):not(#csv-color) {
   display: none;
 }
 
+/* Main */
+
 #csv-table {
   padding: 7px;
+  background-color: white;
 }
 
-.skipped-text {
-  font-family: monospace;
-  margin: 15px 0;
-}
+/* Header */
 
-#table-data {
+#page-header {
   font-family: -apple-system, "Segoe UI", Oxygen, Ubuntu, "Open Sans",
     "Helvetica Neue", sans-serif;
-  padding: 7px;
+  padding: 12px;
   background-color: #eee;
   border: none;
 }
 
-#table-data h3 {
-  color: #444;
-  margin: 0 0 10px 0;
-}
-
-#table-data p {
+#page-header p {
   margin: 0;
   color: #444;
   line-height: 1.5;
 }
 
-#table-data .result {
+#page-header .result {
   font-family: monospace;
   background: #ddd;
   padding: 2px 3px 1px;
   border-radius: 5px;
 }
+
+#page-header #review {
+  color: #444;
+}
+
+/* Skipped Text */
+
+#skipped-text {
+  font-family: monospace;
+  margin: 15px 0;
+}
+
+/* The Table */
 
 table {
   border: 5px solid #ffcf0acc;
