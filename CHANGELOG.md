@@ -8,11 +8,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Added
 
-- Add option to download csv data as JSON (when there is a title row).
-- Add option to just _rainbow-code_ csv (highlight columns with different colors, like the [rainbow-csv plugin](https://github.com/mechatroner/vscode_rainbow_csv)) instead of making a table.
+- Added option to try the csv parser anyway even if `.csv` extension is not detected in the url, thanks @chrishalbert (#7).
+- Added option to download csv data as JSON (when there is a title row).
+- Added option to _rainbow-code_ csv (highlight columns with different colors, like the [rainbow-csv plugin](https://github.com/mechatroner/vscode_rainbow_csv)) instead of making a table.
 
 ### Changed
 
+- Tidy up the popup html:
+  - Removed unused classes in buttons.
 - Updated polyfill from v0.6.0 to to v0.7.0.
 - Keep `extension/polyfills/` folder in git (added a `.gitkeep` file).
 
