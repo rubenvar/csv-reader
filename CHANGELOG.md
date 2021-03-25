@@ -14,10 +14,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Changed
 
+- Removed the `🚧 Work in Progress` tag.
+- Updated `README.md` with new options and a contributing/dev section.
 - Tidy up the popup html:
   - Removed unused classes in buttons.
+  - Removed emojis.
+  - Added svg icons in buttons.
+- Re-styled the popup (new colors and layout).
 - Updated polyfill from v0.6.0 to to v0.7.0.
-- Keep `extension/polyfills/` folder in git (added a `.gitkeep` file).
+- Commit polyfill so the dev process will be easier for anyone.
 
 ## [0.5.0] - 2020-11-15
 
