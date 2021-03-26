@@ -51,7 +51,8 @@ It allows the user to input some settings:
    2. Check if there is a **title row** for the data. This will format a header row in the table.
    3. Input the number of **lines to skip** at the top. Some csv pages have a few lines with info, we don't want to format those.
    4. Check if there are **links** in the data. They will be formatted as clickable links.
-4. Done, enjoy the table!
+4. Click the appropriate button.
+5. Done, enjoy the result!
 
 ### Example
 
@@ -84,11 +85,20 @@ Thank you very much!
 
 ### Contribute
 
-Of course, suggestions and PRs are welcome. This is (roughly) the dev process:
+Of course, suggestions and PRs are welcome. Here is (_roughly_) the dev process:
 
-**TODO**
+`extension/content_scripts/csv_reader.js` has all the parse and output logic. The `browser.tabs` queries use Promises, supported in Firefox but not in Chrome, so the extension loads a polyfill for this.
 
-I'm avoiding to add a build/compiling process (+ adding packages, webpack, etc.) for as long as I can to try and keep it simple.
+`extension/popup/popup.js` manages the user input logic, messages to the main content script, and custom CSS inserts.
+
+To load the unpacked, test extension:
+
+- In Chrome, load the whole unpacked `extension/` folder. Make sure the polyfill is in `extension/polyfills/`.
+- In Firefox, I use Mozilla's [web-ext](https://extensionworkshop.com/documentation/develop/getting-started-with-web-ext/).
+
+To build and pack the extension, I use `web-ext` too. It builds the `extension` folder and creates a `.zip` file inside `extension/web-ext-artifacts`.
+
+That's it, there is no further compiling or building process, for now at least.
 
 ## Some kind of roadmap
 
@@ -100,5 +110,4 @@ Some features I'd like to work on (help appreciated):
 - [ ] Make columns **hideable**.
 - [ ] Make table sortable by column.
 - [ ] Detect if text _looks like a link_ instead of having a popup checkbox.
-- [ ] Add option to download csv file.
-- [ ] Add an initial check to see if content is _too big_. If it is, change the parse method to a lighter (but maybe less precise) one?
+- [ ] Add an initial check to see if content is _too big_. If it is, change the parse method to a lighter one (even if less precise)??
