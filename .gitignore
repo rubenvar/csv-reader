@@ -6,3 +6,7 @@ chrome-web-store/
 *.crx
 *.pem
 *.zip
+
+package.json
+package-lock.json
+node_modules/
