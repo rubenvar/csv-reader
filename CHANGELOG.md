@@ -4,6 +4,12 @@ All notable changes to the [CSV Reader project](https://github.com/rubenvar/csv-
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) (more or less).
 
+## [Unreleased]
+
+### Fixed
+
+- Removed a link to a sample CSV file as it was not there anymore.
+
 ## [1.0.0] - 2021-03-26
 
 ### Added

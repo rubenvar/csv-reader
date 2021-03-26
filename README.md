@@ -56,7 +56,7 @@ It allows the user to input some settings:
 
 ### Example
 
-Visit a `.csv` data file online. You can try [this csv sample dataset](https://rubenvara.s3-eu-west-1.amazonaws.com/csv/dataNov-2-2020.csv) or [this other example](http://www.fpmaj.gr.jp/iyaku/HB_20170227-20170305.csv).
+Visit a `.csv` data file online. You can try [this csv sample dataset](https://rubenvara.s3-eu-west-1.amazonaws.com/csv/dataNov-2-2020.csv).
 
 Click on the **CSV Reader** extension icon.
 
