@@ -1,7 +1,7 @@
 .DS_Store
 .vscode/
 
-web-ext-artifacts/
+web-ext-artifacts/*
 chrome-web-store/
 *.crx
 *.pem
