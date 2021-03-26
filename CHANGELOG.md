@@ -16,6 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - Removed the `🚧 Work in Progress` tag.
 - Updated `README.md` with new options and a contributing/dev section.
+- Added a placeholder in the skip-lines input.
 - Tidy up the popup html:
   - Removed unused classes in buttons.
   - Removed emojis.
