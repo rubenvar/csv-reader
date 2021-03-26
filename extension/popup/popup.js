@@ -125,7 +125,7 @@ function checkExtension(tabs) {
   // get current tab
   let { url } = tabs[0];
   // get extension at the end of url
-  const ext = ([url] = url.substr(1 + url.lastIndexOf('/')).split('?'))
+  const ext = (url = url.substr(1 + url.lastIndexOf('/')).split('?')[0])
     .split('#')[0]
     .substr(url.lastIndexOf('.'));
   // if not csv: report error, show error component, and listen for try-anyway calls
