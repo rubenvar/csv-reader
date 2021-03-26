@@ -1,4 +1,4 @@
-window.browser = (function() {
+window.browser = (function () {
   return window.msBrowser || window.browser || window.chrome;
 })();
 
@@ -19,13 +19,13 @@ function removePrevious() {
 function parseAllRows(allRows, separator) {
   // escape the 'pipe' as it works as a boolean in a regex 😱
   const separatorRegex = new RegExp(separator === '|' ? '\\|' : separator);
-  
-  return allRows.map((line, i) => {
-    // decode html entities safely
-    line = htmlDecode(line);
 
-    // empty row
-    const row = [];
+  return allRows.map((row) => {
+    // decode html entities safely
+    const line = htmlDecode(row);
+
+    // empty result row
+    const parsedRow = [];
     // string parsed and to be stored
     let prev = '';
     // flag to keep track if inside of quotes
@@ -33,22 +33,21 @@ function parseAllRows(allRows, separator) {
 
     // for each line, analyze each character (could be done faster?)
     [...line].forEach((c, j) => {
-      // if it's not the separator outside a string, nor a quote store char
-      if ((!separatorRegex.test(c) || insideQuotes) && !/"/.test(c))
-        prev += c;
+      // if it's not the separator outside a string nor a quote, store char
+      if ((!separatorRegex.test(c) || insideQuotes) && !/"/.test(c)) prev += c;
       // quote found, change the flag
       if (/"/.test(c)) insideQuotes = !insideQuotes;
       // separator found OUTSIDE quotes, push stored to array and clear it
       if (separatorRegex.test(c) && !insideQuotes) {
-        row.push(prev);
+        parsedRow.push(prev);
         prev = '';
       }
       // end of line, push last value to array
-      if (j === line.length - 1) row.push(prev);
+      if (j === line.length - 1) parsedRow.push(prev);
     });
 
     // return array
-    return row;
+    return parsedRow;
   });
 }
 
@@ -65,7 +64,7 @@ function mainWork() {
   function parseCSV(mode, inputSeparator, titleLine, skipLines, hasLinks) {
     removePrevious();
 
-    const urlRegex = /^(http(s)?:\/\/.)?(www\.)?[a-zA-Z0-9]+([\-\.]{1}[a-zA-Z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
+    const urlRegex = /^(http(s)?:\/\/.)?(www\.)?[a-zA-Z0-9]+([-.]{1}[a-zA-Z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
     const separator = inputSeparator === '' ? ',' : inputSeparator;
     const isTable = mode === 'table';
     const isColor = mode === 'color';
@@ -102,17 +101,17 @@ function mainWork() {
       // TODO: find a better way without mutating the array
       const titleRow = arrayOfAllRows.splice(0, 1);
       let row = '<thead><tr>';
-      titleRow[0].forEach(item => (row += `<th>${item}</th>`));
+      titleRow[0].forEach((item) => (row += `<th>${item}</th>`));
       row += '</tr></thead><tbody>';
       result += row;
     }
 
     if (isTable) {
       // add each row
-      arrayOfAllRows.forEach(array => {
+      arrayOfAllRows.forEach((array) => {
         let row = '<tr>';
         array.forEach(
-          item =>
+          (item) =>
             (row += `<td>${
               hasLinks && urlRegex.test(item)
                 ? `<a href=${item} target="_blank" rel="noopener noreferrer nofollow">${item}</a>`
@@ -122,18 +121,19 @@ function mainWork() {
         row += '</tr>';
         result += row;
       });
-      
+
       // and close table
       result += '</tbody></table>';
-
     } else if (isColor) {
       // add <span> tags to each block
-      arrayOfAllRows.forEach(array => {
+      arrayOfAllRows.forEach((array) => {
         let row = '';
         array.forEach(
           (item, k) =>
             (row += `<span class="col-${k}">${item}</span>${
-              k < array.length - 1 ? `<span class="sep">${separator}</span>` : ''
+              k < array.length - 1
+                ? `<span class="sep">${separator}</span>`
+                : ''
             }`)
         );
         row += '<br/>';
@@ -161,35 +161,35 @@ function mainWork() {
       </p>
       <br />
       <p id="review">
-        ⭐ Was this Extension useful? Please consider spending <em>${Math.floor(Math.random() * 31) +
-        30} seconds</em> leaving a 5-star review (in <a href="https://chrome.google.com/webstore/detail/csv-reader/dnioinfbhmclclfdbcnlfgbojdpdicde" target="_blank" rel="nofollow noreferrer noopener">Chrome</a> or <a href="https://addons.mozilla.org/es/firefox/addon/csv-reader/" target="_blank" rel="nofollow noreferrer noopener">Firefox</a>).
+        ⭐ Was this Extension useful? Please consider spending <em>${
+          Math.floor(Math.random() * 31) + 30
+        } seconds</em> leaving a 5-star review (in <a href="https://chrome.google.com/webstore/detail/csv-reader/dnioinfbhmclclfdbcnlfgbojdpdicde" target="_blank" rel="nofollow noreferrer noopener">Chrome</a> or <a href="https://addons.mozilla.org/es/firefox/addon/csv-reader/" target="_blank" rel="nofollow noreferrer noopener">Firefox</a>).
       </p>`;
-
   }
 
   function createJson(inputSeparator, titleLine, skipLines) {
     if (!titleLine) return console.log('errorrr!');
     removePrevious();
-    
+
     // get all text
     const html = document.body.innerHTML;
     const htmlNoTags = html.replace(/<\/?[a-z]+>/gi, '');
     // separate in lines
     const allRows = htmlNoTags.split('\n');
-    
+
     if (skipLines > 0) allRows.splice(0, skipLines);
-    
+
     // parse allllll rows
-    const separator = inputSeparator === '' ? ',' : inputSeparator;    
+    const separator = inputSeparator === '' ? ',' : inputSeparator;
     const arrayOfAllRows = parseAllRows(allRows, separator);
 
     // get the title row
     const titleRow = arrayOfAllRows.splice(0, 1)[0];
 
     // create an array of objects
-    const result = arrayOfAllRows.map(row => {
-      const obj = {}
-      row.forEach((str, i) => obj[titleRow[i]] = str);
+    const result = arrayOfAllRows.map((row) => {
+      const obj = {};
+      row.forEach((str, i) => (obj[titleRow[i]] = str));
       return obj;
     });
 
@@ -201,7 +201,7 @@ function mainWork() {
     // create a blob, append it to the link, and click the link
     function createFile(data, fileName) {
       const json = JSON.stringify(data);
-      const blob = new Blob([json], {type: "octet/stream"});
+      const blob = new Blob([json], { type: 'octet/stream' });
       const url = window.URL.createObjectURL(blob);
       a.href = url;
       a.download = fileName;
@@ -209,15 +209,19 @@ function mainWork() {
       window.URL.revokeObjectURL(url);
       a.remove();
     }
-    
+
     return createFile(result, `exported${Date.now()}.json`);
   }
 
-  browser.runtime.onMessage.addListener(({ command, separator, titleLine, skipLines, hasLinks }) => {
-    if (command === 'reset') return removePrevious();
-    if (command === 'json') return createJson(separator, titleLine, skipLines);
-    return parseCSV(command, separator, titleLine, skipLines, hasLinks);
-  });
+  // eslint-disable-next-line no-undef
+  browser.runtime.onMessage.addListener(
+    ({ command, separator, titleLine, skipLines, hasLinks }) => {
+      if (command === 'reset') return removePrevious();
+      if (command === 'json')
+        return createJson(separator, titleLine, skipLines);
+      return parseCSV(command, separator, titleLine, skipLines, hasLinks);
+    }
+  );
 }
 
 mainWork();

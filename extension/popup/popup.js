@@ -1,9 +1,10 @@
+/* eslint-disable no-undef */
 const popup = document.getElementById('csv-reader-popup');
 const buttons = popup.querySelectorAll('button');
 const titleRow = popup.querySelector('#title-line');
 const jsonExport = popup.querySelector('#json-export');
 
-window.browser = (function() {
+window.browser = (function () {
   return window.msBrowser || window.browser || window.chrome;
 })();
 
@@ -49,7 +50,7 @@ function colorCSV(tabs) {
     skipLines,
     command: 'color',
   });
-  
+
   window.close();
 }
 
@@ -58,7 +59,7 @@ function exportJSON(tabs) {
   const separator = document.getElementById('separator').value;
   const titleLine = document.getElementById('title-line').checked;
   const skipLines = document.getElementById('skip-lines').value;
-  
+
   browser.tabs.sendMessage(tabs[0].id, {
     separator,
     titleLine,
@@ -75,14 +76,14 @@ function reportError(error) {
 
 function listenForClicks() {
   // enable json-export button only when there is a title row
-  titleRow.addEventListener('change', function() {
+  titleRow.addEventListener('change', function () {
     if (this.checked) jsonExport.disabled = false;
     else jsonExport.disabled = true;
   });
 
-  buttons.forEach(button => {
+  buttons.forEach((button) => {
     // click in popup buttons only
-    button.addEventListener('click', e => {
+    button.addEventListener('click', (e) => {
       e.preventDefault();
       if (e.target.id === 'convert') {
         browser.tabs
@@ -124,14 +125,14 @@ function checkExtension(tabs) {
   // get current tab
   let { url } = tabs[0];
   // get extension at the end of url
-  const ext = (url = url.substr(1 + url.lastIndexOf('/')).split('?')[0])
+  const ext = ([url] = url.substr(1 + url.lastIndexOf('/')).split('?'))
     .split('#')[0]
     .substr(url.lastIndexOf('.'));
   // if not csv: report error, show error component, and listen for try-anyway calls
   if (ext !== '.csv' && ext !== '.CSV') {
     reportError('Not a .csv page');
     showPopupError();
-    document.getElementById('try-anyway').addEventListener('click', e => {
+    document.getElementById('try-anyway').addEventListener('click', (e) => {
       e.preventDefault();
       document.querySelector('#csv-reader-popup').classList.remove('hidden');
       document.querySelector('#error-content').classList.add('hidden');
