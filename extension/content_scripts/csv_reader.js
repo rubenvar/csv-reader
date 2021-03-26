@@ -163,7 +163,7 @@ function mainWork() {
       <p id="review">
         ⭐ Was this Extension useful? Please consider spending <em>${
           Math.floor(Math.random() * 31) + 30
-        } seconds</em> leaving a 5-star review (in <a href="https://chrome.google.com/webstore/detail/csv-reader/dnioinfbhmclclfdbcnlfgbojdpdicde" target="_blank" rel="nofollow noreferrer noopener">Chrome</a> or <a href="https://addons.mozilla.org/es/firefox/addon/csv-reader/" target="_blank" rel="nofollow noreferrer noopener">Firefox</a>).
+        } seconds</em> leaving a 5-star review (in <a href="https://chrome.google.com/webstore/detail/csv-reader/dnioinfbhmclclfdbcnlfgbojdpdicde" target="_blank" rel="nofollow noreferrer noopener">Chrome</a> or <a href="https://addons.mozilla.org/en-US/firefox/addon/csv-reader/" target="_blank" rel="nofollow noreferrer noopener">Firefox</a>).
       </p>`;
   }
 
