@@ -105,9 +105,14 @@ That's it, there is no further compiling or building process, for now at least.
 Some features I'd like to work on (help appreciated):
 
 - [ ] Show **progress**: while the content is being processed, hide the raw csv and show a loading component.
-- [ ] Try to stop .csv files from **downloading**, and instead open them in browser so thay can be converted. _How?_
+- [ ] Try to stop `.csv` files from **downloading**, and instead open them in browser so thay can be converted. _How?_
+- [ ] Store user config (per datasheet) so they don't have to input the same fields every time.
 - [ ] Try to **auto-detect** separator.
 - [ ] Make columns **hideable**.
 - [ ] Make table sortable by column.
 - [ ] Detect if text _looks like a link_ instead of having a popup checkbox.
 - [ ] Add an initial check to see if content is _too big_. If it is, change the parse method to a lighter one (even if less precise)??
+
+## Thanks
+
+CSV Reader uses svg icons from [Tabler Icons](https://github.com/tabler/tabler-icons).
