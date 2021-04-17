@@ -113,6 +113,6 @@ Some features I'd like to work on (help appreciated):
 - [ ] Detect if text _looks like a link_ instead of having a popup checkbox.
 - [ ] Add an initial check to see if content is _too big_. If it is, change the parse method to a lighter one (even if less precise)??
 
-## Thanks
+## Acknowledgments
 
-CSV Reader uses svg icons from [Tabler Icons](https://github.com/tabler/tabler-icons).
+CSV Reader uses `svg` icons from [Tabler Icons](https://github.com/tabler/tabler-icons), thanks!
