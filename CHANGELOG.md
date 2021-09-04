@@ -6,9 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-### Fixed
+## [1.0.1] - 2021-09-04
 
-- Removed a link to a sample CSV file as it was not there anymore.
+### Changed
+
+- Tweaks in readme. Removed a link to a sample CSV file as it was not there anymore.
+- Updated browser-polyfill (0.7.0 -> 0.8.0).
 
 ## [1.0.0] - 2021-03-26
 
