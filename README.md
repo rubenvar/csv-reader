@@ -4,9 +4,9 @@
 
 ## What is this?
 
-A browser extension.
+A browser extension with 2k+ users.
 
-It will transform raw `csv` data into a simple `html` table, and show it online in the same tab.
+It transforms raw `csv` data into a simple `html` table, and shows it online in the same tab.
 
 Available free for [Chrome](https://chrome.google.com/webstore/detail/csv-reader/dnioinfbhmclclfdbcnlfgbojdpdicde) and [Firefox](https://addons.mozilla.org/en-US/firefox/addon/csv-reader/).
 
@@ -17,7 +17,7 @@ When quickly looking through csv data files online, you either have to:
 - Open them with Excel, Numbers, etc.
 - Try to skim through the data in its raw state.
 
-_CSV Reader_ allows you to look at the data formatted as a table, so you can make decisions faster.
+CSV Reader allows you to look at the data formatted as a table, so you can make decisions faster.
 
 ## Features
 
@@ -85,16 +85,16 @@ Thank you very much!
 
 ### Contribute
 
-Of course, suggestions and PRs are welcome. Here is (_roughly_) the dev process:
+Suggestions and PRs are welcome, of course. This is (_roughly_) the dev process:
 
-`extension/content_scripts/csv_reader.js` has all the parse and output logic. The `browser.tabs` queries use Promises, supported in Firefox but not in Chrome, so the extension loads a polyfill for this.
+`extension/content_scripts/csv_reader.js` contains all the parse and output logic. The `browser.tabs` queries use Promises, supported in Firefox but not in Chrome, so the extension loads a polyfill for this.
 
-`extension/popup/popup.js` manages the user input logic, messages to the main content script, and custom CSS inserts.
+`extension/popup/popup.js` manages the user input logic, messaging to the main content script, and custom CSS inserts.
 
 To load the unpacked, test extension:
 
 - In Chrome, load the whole unpacked `extension/` folder. Make sure the polyfill is in `extension/polyfills/`.
-- In Firefox, I use Mozilla's [web-ext](https://extensionworkshop.com/documentation/develop/getting-started-with-web-ext/).
+- In Firefox, I use Mozilla's [web-ext](https://extensionworkshop.com/documentation/develop/getting-started-with-web-ext/) tool.
 
 To build and pack the extension, I use `web-ext` too. It builds the `extension` folder and creates a `.zip` file inside `extension/web-ext-artifacts`.
 
