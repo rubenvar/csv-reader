@@ -8,6 +8,35 @@ window.browser = (function () {
   return window.msBrowser || window.browser || window.chrome;
 })();
 
+function showPopupError() {
+  document.querySelector('#csv-reader-popup').classList.add('hidden');
+  document.querySelector('#error-content').classList.remove('hidden');
+}
+
+function reportError(error) {
+  console.error(`Could not read CSV: ${error}`);
+}
+
+function checkExtension(tabs) {
+  // get current tab
+  let { url } = tabs[0];
+  // get extension at the end of url
+  // eslint-disable-next-line prefer-destructuring
+  const ext = (url = url.substr(1 + url.lastIndexOf('/')).split('?')[0])
+    .split('#')[0]
+    .substr(url.lastIndexOf('.'));
+  // if not csv: report error, show error component, and listen for try-anyway calls
+  if (ext !== '.csv' && ext !== '.CSV') {
+    reportError('Not a .csv page');
+    showPopupError();
+    document.getElementById('try-anyway').addEventListener('click', (e) => {
+      e.preventDefault();
+      document.querySelector('#csv-reader-popup').classList.remove('hidden');
+      document.querySelector('#error-content').classList.add('hidden');
+    });
+  }
+}
+
 // get input values as config for processing functions
 // (will be auto filled from localStorage if the was any)
 function getConfig(tabs) {
@@ -25,10 +54,7 @@ function processCSV(tabs) {
   const config = getConfig(tabs);
 
   browser.tabs.insertCSS({ file: '/popup/css/insert.css' });
-  browser.tabs.sendMessage(tabs[0].id, {
-    ...config,
-    command: 'table',
-  });
+  browser.tabs.sendMessage(tabs[0].id, { command: 'table', ...config });
 
   // close the popup
   window.close();
@@ -39,10 +65,7 @@ function colorCSV(tabs) {
   const config = getConfig(tabs);
 
   browser.tabs.insertCSS({ file: '/popup/css/insert-color.css' });
-  browser.tabs.sendMessage(tabs[0].id, {
-    ...config,
-    command: 'color',
-  });
+  browser.tabs.sendMessage(tabs[0].id, { command: 'color', ...config });
 
   window.close();
 }
@@ -51,10 +74,7 @@ function colorCSV(tabs) {
 function exportJSON(tabs) {
   const config = getConfig(tabs);
 
-  browser.tabs.sendMessage(tabs[0].id, {
-    ...config,
-    command: 'json',
-  });
+  browser.tabs.sendMessage(tabs[0].id, { command: 'json', ...config });
 
   window.close();
 }
@@ -68,14 +88,9 @@ function reset(tabs) {
   // browser.tabs.removeCSS({ file: '/popup/css/insert.css' });
   // ? so for now reseting the tab just reloads it... 🤷‍♂️ meh
   browser.tabs.reload();
-
-  browser.tabs.sendMessage(tabs[0].id, { ...config, command: 'reset' });
+  browser.tabs.sendMessage(tabs[0].id, { command: 'reset', ...config });
 
   window.close();
-}
-
-function reportError(error) {
-  console.error(`Could not read CSV: ${error}`);
 }
 
 function listenForClicks() {
@@ -114,35 +129,10 @@ function listenForClicks() {
   });
 }
 
-function showPopupError() {
-  document.querySelector('#csv-reader-popup').classList.add('hidden');
-  document.querySelector('#error-content').classList.remove('hidden');
-}
-
 // error executing the script
 function reportExecuteScriptError(error) {
   showPopupError();
   console.error(`Failed to execute script: ${error.message}`);
-}
-
-function checkExtension(tabs) {
-  // get current tab
-  let { url } = tabs[0];
-  // get extension at the end of url
-  // eslint-disable-next-line prefer-destructuring
-  const ext = (url = url.substr(1 + url.lastIndexOf('/')).split('?')[0])
-    .split('#')[0]
-    .substr(url.lastIndexOf('.'));
-  // if not csv: report error, show error component, and listen for try-anyway calls
-  if (ext !== '.csv' && ext !== '.CSV') {
-    reportError('Not a .csv page');
-    showPopupError();
-    document.getElementById('try-anyway').addEventListener('click', (e) => {
-      e.preventDefault();
-      document.querySelector('#csv-reader-popup').classList.remove('hidden');
-      document.querySelector('#error-content').classList.add('hidden');
-    });
-  }
 }
 
 // TODO maybe should only do the 'executeScript' if the extension is correct? could concatenate both things?
