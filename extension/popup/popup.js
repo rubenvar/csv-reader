@@ -8,30 +8,24 @@ window.browser = (function () {
   return window.msBrowser || window.browser || window.chrome;
 })();
 
-function reset(tabs) {
-  // ? .removeCSS doesn't work in Chrome: it's still in beta. It works well in Firefox
-  // browser.tabs.removeCSS({ file: '/popup/css/insert.css' });
-  // ? so for now reseting the tab just reloads it... 🤷‍♂️ meh
-  browser.tabs.reload();
-  // ? so probably no need to send any command then...
-  browser.tabs.sendMessage(tabs[0].id, { command: 'reset' });
-
-  window.close();
+// get input values as config for processing functions
+// (will be auto filled from localStorage if the was any)
+function getConfig() {
+  return {
+    separator: document.getElementById('separator').value,
+    titleLine: document.getElementById('title-line').checked,
+    skipLines: document.getElementById('skip-lines').value,
+    hasLinks: document.getElementById('has-links').checked,
+  };
 }
 
 // send order to create a table
 function processCSV(tabs) {
-  const separator = document.getElementById('separator').value;
-  const titleLine = document.getElementById('title-line').checked;
-  const skipLines = document.getElementById('skip-lines').value;
-  const hasLinks = document.getElementById('has-links').checked;
+  const config = getConfig();
 
   browser.tabs.insertCSS({ file: '/popup/css/insert.css' });
   browser.tabs.sendMessage(tabs[0].id, {
-    separator,
-    titleLine,
-    skipLines,
-    hasLinks,
+    ...config,
     command: 'table',
   });
 
@@ -41,13 +35,11 @@ function processCSV(tabs) {
 
 // send order to format for coloring
 function colorCSV(tabs) {
-  const separator = document.getElementById('separator').value;
-  const skipLines = document.getElementById('skip-lines').value;
+  const config = getConfig();
 
   browser.tabs.insertCSS({ file: '/popup/css/insert-color.css' });
   browser.tabs.sendMessage(tabs[0].id, {
-    separator,
-    skipLines,
+    ...config,
     command: 'color',
   });
 
@@ -56,16 +48,27 @@ function colorCSV(tabs) {
 
 // send order to create json
 function exportJSON(tabs) {
-  const separator = document.getElementById('separator').value;
-  const titleLine = document.getElementById('title-line').checked;
-  const skipLines = document.getElementById('skip-lines').value;
+  const config = getConfig();
 
   browser.tabs.sendMessage(tabs[0].id, {
-    separator,
-    titleLine,
-    skipLines,
+    ...config,
     command: 'json',
   });
+
+  window.close();
+}
+
+function reset(tabs) {
+  // get and pass the config (even from maybe empty inputs)
+  // so that localStorage is not full of undefineds
+  const config = getConfig();
+
+  // ? .removeCSS doesn't work in Chrome: it's still in beta. It works well in Firefox
+  // browser.tabs.removeCSS({ file: '/popup/css/insert.css' });
+  // ? so for now reseting the tab just reloads it... 🤷‍♂️ meh
+  browser.tabs.reload();
+
+  browser.tabs.sendMessage(tabs[0].id, { ...config, command: 'reset' });
 
   window.close();
 }
@@ -125,6 +128,7 @@ function checkExtension(tabs) {
   // get current tab
   let { url } = tabs[0];
   // get extension at the end of url
+  // eslint-disable-next-line prefer-destructuring
   const ext = (url = url.substr(1 + url.lastIndexOf('/')).split('?')[0])
     .split('#')[0]
     .substr(url.lastIndexOf('.'));
@@ -146,6 +150,22 @@ browser.tabs
   .query({ active: true, currentWindow: true })
   .then(checkExtension)
   .catch(reportExecuteScriptError);
+
+// load the polyfill here so I can use promises in the csv_reader scripts
+browser.tabs.executeScript({ file: '/polyfills/browser-polyfill.min.js' });
+// pollyfill is also loaded in popup.html first so this file (popup.js) can use promises
+
+// get stored config
+browser.storage.local.get().then(
+  (content) => {
+    // and set it into the popup inputs by default
+    document.getElementById('separator').value = content.separator;
+    document.getElementById('title-line').checked = content.titleLine;
+    document.getElementById('skip-lines').value = content.skipLines;
+    document.getElementById('has-links').checked = content.hasLinks;
+  },
+  (err) => console.error({ err })
+);
 
 // start main script
 browser.tabs
