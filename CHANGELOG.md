@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [1.1.0] - 2022-03-21
+
+### Added
+
+- Store user config in local storage:
+  - Store a config value per page url.
+  - Get it on popup open, and load it into the popup inputs by default.
+  - Set it on parse demand.
+
 ## [1.0.1] - 2021-09-04
 
 ### Changed

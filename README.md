@@ -4,7 +4,7 @@
 
 ## What is this?
 
-A browser extension with 2k+ users.
+A browser extension with 3.5k+ users.
 
 It transforms raw `csv` data into a simple `html` table, and shows it online in the same tab.
 
@@ -22,6 +22,8 @@ CSV Reader allows you to look at the data formatted as a table, so you can make 
 ## Features
 
 CSV Reader detects if the current tab is a `.csv` page (correctly most of the time).
+
+The user can select some settings in a popup. The extension stores these settings per url.
 
 ### Output
 
@@ -105,13 +107,13 @@ That's it, there is no further compiling or building process, for now at least.
 Some features I'd like to work on (help appreciated):
 
 - [ ] Show **progress**: while the content is being processed, hide the raw csv and show a loading component.
+- [ ] Add a **reset** button directly above the table header, in the table-data area maybe.
 - [ ] Try to stop `.csv` files from **downloading**, and instead open them in browser so thay can be converted. _How?_
-- [ ] Store user config (per datasheet) so they don't have to input the same fields every time.
+- [x] Store user config (per url) so they don't have to input the same fields every time.
 - [ ] Try to **auto-detect** separator.
 - [ ] Make columns **hideable**.
 - [ ] Make table sortable by column.
 - [ ] Detect if text _looks like a link_ instead of having a popup checkbox.
-- [ ] Add an initial check to see if content is _too big_. If it is, change the parse method to a lighter one (even if less precise)??
 
 ## Acknowledgments
 

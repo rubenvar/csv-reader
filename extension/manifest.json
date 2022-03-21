@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "CSV Reader",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Transforms raw csv data into a simple html table, easily readable on the browser",
   "homepage_url": "https://github.com/rubenvar/csv-reader",
   "icons": {
@@ -20,8 +20,16 @@
     "default_popup": "popup/popup.html",
     "default_title": "CSV Reader",
     "theme_icons": [
-      { "dark": "icons/csv-16.png", "light": "icons/csv-light-16.png", "size": 16 },
-      { "dark": "icons/csv-32.png", "light": "icons/csv-light-32.png", "size": 32 }
+      {
+        "dark": "icons/csv-16.png",
+        "light": "icons/csv-light-16.png",
+        "size": 16
+      },
+      {
+        "dark": "icons/csv-32.png",
+        "light": "icons/csv-light-32.png",
+        "size": 32
+      }
     ]
   },
   "author": "Rubén Vara"
