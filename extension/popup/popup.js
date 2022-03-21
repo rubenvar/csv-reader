@@ -161,6 +161,8 @@ browser.tabs.query({ active: true, currentWindow: true }).then(
         document.getElementById('title-line').checked = storedConfig.titleLine;
         document.getElementById('skip-lines').value = storedConfig.skipLines;
         document.getElementById('has-links').checked = storedConfig.hasLinks;
+        // also manage json export button with stored config
+        if (storedConfig.titleLine === true) jsonExport.disabled = false;
       }
     });
   },
