@@ -23,7 +23,11 @@ CSV Reader allows you to look at the data formatted as a table, so you can make 
 
 CSV Reader detects if the current tab is a `.csv` page (correctly most of the time).
 
-The user can select some settings in a popup. The extension stores these settings per url.
+The user can select some settings in a popup to modify the output.
+
+**NEW**: The extension now stores user settings per url for the next time you browse the same file.
+
+**NEW**: The extension now stops `csv` files from downloading (it modifies the response headers) so you can parse them in-browser. If you want to download the file, just `ctrl+s` (`cmd+s`), even in the parsed `csv` screen.
 
 ### Output
 

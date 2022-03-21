@@ -10,7 +10,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Added
 
-- Store user config in local storage:
+- **Stop** files from downloading, so they can be parsed in-browser: Modify response headers in a `background.js` file
+- **Store** user config in local storage:
   - Store a config value per page url.
   - Get it on popup open, and load it into the popup inputs by default.
   - Set it on parse demand.
