@@ -27,7 +27,7 @@ The user can select some settings in a popup to modify the output.
 
 **NEW**: The extension now stores user settings per url for the next time you browse the same file.
 
-**NEW**: The extension now stops `csv` files from downloading (it modifies the response headers) so you can parse them in-browser. If you want to download the file, just `ctrl+s` (`cmd+s`), even in the parsed `csv` screen.
+**NEW**: The extension now stops `csv` files from downloading (it modifies the response headers) so you can parse them in-browser. If you want to download the file just `ctrl+s` (`cmd+s`), even in the parsed `csv` screen.
 
 ### Output
 
