@@ -218,7 +218,18 @@ function mainWork() {
 
   // eslint-disable-next-line no-undef
   browser.runtime.onMessage.addListener(
+    // these settings come from the popup message sender
+    // they will be used to parse the csv
     ({ command, separator, titleLine, skipLines, hasLinks }) => {
+      // store these settings in localStorage for next calls
+      // eslint-disable-next-line no-undef
+      browser.storage.local
+        .set({ separator, titleLine, skipLines, hasLinks })
+        .then(
+          () => console.log('setting ok'),
+          (err) => console.error(err)
+        );
+
       if (command === 'reset') return removePrevious();
       if (command === 'json')
         return createJson(separator, titleLine, skipLines);
