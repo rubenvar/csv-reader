@@ -171,7 +171,7 @@ function mainWork() {
   }
 
   function createJson(inputSeparator, titleLine, skipLines) {
-    if (!titleLine) return console.log('errorrr!');
+    if (!titleLine) return console.error('errorrr!');
     removePrevious();
 
     // get all text
@@ -220,11 +220,12 @@ function mainWork() {
   browser.runtime.onMessage.addListener(
     // these settings come from the popup message sender
     // they will be used to parse the csv
-    ({ command, separator, titleLine, skipLines, hasLinks }) => {
+    ({ command, url, separator, titleLine, skipLines, hasLinks }) => {
       // store these settings in localStorage for next calls
       // eslint-disable-next-line no-undef
       browser.storage.local
-        .set({ separator, titleLine, skipLines, hasLinks })
+        // stored in an object with the current url as a key
+        .set({ [url]: { separator, titleLine, skipLines, hasLinks } })
         .then(
           () => console.log('setting ok'),
           (err) => console.error(err)
