@@ -112,7 +112,7 @@ Some features I'd like to work on (help appreciated):
 
 - [ ] Show **progress**: while the content is being processed, hide the raw csv and show a loading component.
 - [ ] Add a **reset** button directly above the table header, in the table-data area maybe.
-- [ ] Try to stop `.csv` files from **downloading**, and instead open them in browser so thay can be converted. _How?_
+- [x] Stop `.csv` files from **downloading**, and instead open them in browser so thay can be converted.
 - [x] Store user config (per url) so they don't have to input the same fields every time.
 - [ ] Try to **auto-detect** separator.
 - [ ] Make columns **hideable**.
