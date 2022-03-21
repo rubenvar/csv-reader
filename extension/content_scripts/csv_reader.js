@@ -71,7 +71,6 @@ function mainWork() {
     const separator = inputSeparator === '' ? ',' : inputSeparator;
     const isTable = mode === 'table';
     const isColor = mode === 'color';
-    // escape the 'pipe' as it works as a boolean in a regex 😱
 
     const resultContainer = document.createElement('main');
     resultContainer.id = `csv-${isTable ? 'table' : 'color'}`;
