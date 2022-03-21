@@ -2,12 +2,13 @@ window.browser = (function () {
   return window.msBrowser || window.browser || window.chrome;
 })();
 
-// Helpers:
+// helper
 function htmlDecode(input) {
   const doc = new DOMParser().parseFromString(input, 'text/html');
   return doc.documentElement.textContent;
 }
-// remove previous tables
+
+// remove previous tables (reset page)
 function removePrevious() {
   const table = document.getElementById('csv-table');
   const color = document.getElementById('csv-color');
@@ -16,6 +17,7 @@ function removePrevious() {
   if (color) color.remove();
 }
 
+// reads each row and returns an array with each column as a value
 function parseAllRows(allRows, separator) {
   // escape the 'pipe' as it works as a boolean in a regex 😱
   const separatorRegex = new RegExp(separator === '|' ? '\\|' : separator);
@@ -53,18 +55,19 @@ function parseAllRows(allRows, separator) {
 
 // where eeeeverything happens
 function mainWork() {
-  // Avoid injecting script more than once
+  // avoid injecting the script more than once
   if (window.hasRun) {
     return;
   }
   window.hasRun = true;
 
-  // TODO try to guess the separator instead of hard-coding a ','
+  // TODO try to guess the separator instead of hard-coding a ','?
   // main parsin fn, keep code DRY with only this function and a _mode_
   function parseCSV(mode, inputSeparator, titleLine, skipLines, hasLinks) {
     removePrevious();
 
-    const urlRegex = /^(http(s)?:\/\/.)?(www\.)?[a-zA-Z0-9]+([-.]{1}[a-zA-Z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
+    const urlRegex =
+      /^(http(s)?:\/\/.)?(www\.)?[a-zA-Z0-9]+([-.]{1}[a-zA-Z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
     const separator = inputSeparator === '' ? ',' : inputSeparator;
     const isTable = mode === 'table';
     const isColor = mode === 'color';
