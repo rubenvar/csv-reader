@@ -9,7 +9,16 @@
     "48": "icons/csv-48.png",
     "96": "icons/csv-96.png"
   },
-  "permissions": ["storage", "activeTab"],
+  "permissions": [
+    "storage",
+    "activeTab",
+    "webRequest",
+    "webRequestBlocking",
+    "<all_urls>"
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  },
   "browser_action": {
     "browser_style": true,
     "default_icon": {
