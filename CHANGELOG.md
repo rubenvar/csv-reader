@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [1.1.1] - 2022-03-22
+
+### Fixed
+
+- Fixed response headers being modified for all websites if extension is active, now it only changes them for `.csv` urls.
+
 ## [1.1.0] - 2022-03-21
 
 ### Added
