@@ -4,13 +4,21 @@ window.browser = (function () {
 })();
 
 // return a BlockingResponse object with the new/modified headers
-function responseHandler() {
-  return {
-    responseHeaders: [
-      { name: 'content-type', value: 'text/plain' },
-      { name: 'content-disposition', value: 'inline' },
-    ],
-  };
+// only if the current extension is .csv
+function responseHandler(details) {
+  let { url } = details;
+  // eslint-disable-next-line prefer-destructuring
+  const ext = (url = url.substr(1 + url.lastIndexOf('/')).split('?')[0])
+    .split('#')[0]
+    .substr(url.lastIndexOf('.'));
+  if (ext === '.csv' || ext === '.CSV') {
+    return {
+      responseHeaders: [
+        { name: 'content-type', value: 'text/plain' },
+        { name: 'content-disposition', value: 'inline' },
+      ],
+    };
+  }
 }
 
 // remove previous
