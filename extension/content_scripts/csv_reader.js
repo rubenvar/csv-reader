@@ -62,7 +62,7 @@ function mainWork() {
   window.hasRun = true;
 
   // TODO try to guess the separator instead of hard-coding a ','?
-  // main parsin fn, keep code DRY with only this function and a _mode_
+  // main parsing fn, keep code DRY with only this function and a _mode_
   function parseCSV(mode, inputSeparator, titleLine, skipLines, hasLinks) {
     removePrevious();
 
