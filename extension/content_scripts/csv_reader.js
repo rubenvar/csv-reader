@@ -226,7 +226,7 @@ function mainWork() {
         // stored in an object with the current url as a key
         .set({ [url]: { separator, titleLine, skipLines, hasLinks } })
         .then(
-          () => console.log('setting ok'),
+          () => {},
           (err) => console.error(err)
         );
 
