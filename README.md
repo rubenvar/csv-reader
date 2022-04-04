@@ -111,9 +111,10 @@ That's it, there is no further compiling or building process, for now at least.
 Some features I'd like to work on (help appreciated):
 
 - [ ] Show **progress**: while the content is being processed, hide the raw csv and show a loading component.
-- [ ] Add a **reset** button directly above the table header, in the table-data area maybe.
+- [ ] Add a **reset** button directly in the page header.
 - [x] Stop `.csv` files from **downloading**, and instead open them in browser so thay can be converted.
 - [x] Store user config (per url) so they don't have to input the same fields every time.
+- [ ] Add a link to download .csv file in the page header.
 - [ ] Try to **auto-detect** separator.
 - [ ] Make columns **hideable**.
 - [ ] Make table sortable by column.
