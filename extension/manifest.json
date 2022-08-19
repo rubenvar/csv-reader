@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "CSV Reader",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Transforms raw csv data into a simple html table, easily readable on the browser",
   "homepage_url": "https://github.com/rubenvar/csv-reader",
   "icons": {

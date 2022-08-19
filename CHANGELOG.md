@@ -6,6 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [1.1.2] - 2022-08-19
+
+### Changed
+
+- Updated browser-polyfill (0.8.0 -> 0.10.0).
+
+### Fixed
+
+- Fixed table text not visible in dark mode in both Firefox and Chrome.
+
 ### Removed
 
 - Removed a `console.log`.
@@ -39,7 +49,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - Added option to try the csv parser anyway even if `.csv` extension is not detected in the url, thanks @chrishalbert (#7).
 - Added option to download csv data as JSON (when there is a title row).
-- Added option to _rainbow-code_ csv (highlight columns with different colors, like the [rainbow-csv plugin](https://github.com/mechatroner/vscode_rainbow_csv)) instead of making a table.
+- Added option to *rainbow-code* csv (highlight columns with different colors, like the [rainbow-csv plugin](https://github.com/mechatroner/vscode_rainbow_csv)) instead of making a table.
 
 ### Changed
 
@@ -67,7 +77,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Fixed
 
 - Improved the URL detection regex: now it accepts urls with lower and upper case.
-- Removed _skip lines on top_ input placeholder to avoid confussion (it showed `3`, but the default is `0`...).
+- Removed *skip lines on top* input placeholder to avoid confussion (it showed `3`, but the default is `0`...).
 - Fix the size/proportion of the popup in Chrome.
 
 ## [0.4.0] - 2020-11-09
