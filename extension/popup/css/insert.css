@@ -59,6 +59,7 @@ table {
   font-size: 15px;
   border-spacing: 1px 0;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  color: #111; /* fixes text not readable in dark mode */
 }
 
 thead {
